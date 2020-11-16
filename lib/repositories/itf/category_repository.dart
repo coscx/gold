@@ -2,8 +2,7 @@ import 'package:flutter_unit/model/category_model.dart';
 import 'package:flutter_unit/model/widget_model.dart';
 import 'package:flutter_unit/storage/po/category_po.dart';
 
-/// create by 张风捷特烈 on 2020-04-21
-/// contact me by email 1981462002@qq.com
+
 /// 说明: 负责数据的存储和操作接口
 
 abstract class CategoryRepository {

@@ -8,8 +8,6 @@ import 'package:flutter_unit/components/permanent/input_button.dart';
 import 'package:flutter_unit/components/project/color_chooser.dart';
 import 'package:flutter_unit/model/category_model.dart';
 
-/// create by 张风捷特烈 on 2020-04-23
-/// contact me by email 1981462002@qq.com
 /// 说明:
 
 enum EditType { add, update }

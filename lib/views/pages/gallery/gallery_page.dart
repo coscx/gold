@@ -13,8 +13,7 @@ import 'art/triangular_mesh.dart';
 import 'art/un_deux_trois.dart';
 import 'picture_frame.dart';
 
-/// create by 张风捷特烈 on 2020/10/10
-/// contact me by email 1981462002@qq.com
+
 /// 说明:
 
 class GalleryPage extends StatefulWidget {

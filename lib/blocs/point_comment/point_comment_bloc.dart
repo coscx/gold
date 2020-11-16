@@ -8,8 +8,7 @@ import 'point_comment_event.dart';
 import 'point_comment_state.dart';
 
 
-/// create by 张风捷特烈 on 2020-09-03
-/// contact me by email 1981462002@qq.com
+
 /// 说明:
 
 class PointCommentBloc extends Bloc<PointCommentEvent, PointCommentState> {

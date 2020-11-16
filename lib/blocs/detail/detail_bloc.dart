@@ -6,9 +6,7 @@ import 'package:flutter_unit/repositories/itf/widget_repository.dart';
 import 'detail_event.dart';
 import 'detail_state.dart';
 
-/// create by 张风捷特烈 on 2020-03-03
-/// contact me by email 1981462002@qq.com
-/// 说明:
+
 
 class DetailBloc extends Bloc<DetailEvent, DetailState> {
   final WidgetRepository repository;

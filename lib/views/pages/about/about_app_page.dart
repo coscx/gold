@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-/// create by 张风捷特烈 on 2020-04-13
-/// contact me by email 1981462002@qq.com
+
 /// 说明:
 
 import 'package:flutter/material.dart';

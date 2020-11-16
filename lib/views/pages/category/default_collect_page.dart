@@ -5,8 +5,6 @@ import 'package:flutter_unit/blocs/bloc_exp.dart';
 import 'package:flutter_unit/model/widget_model.dart';
 import 'package:flutter_unit/views/items/collect_widget_list_item.dart';
 
-/// create by 张风捷特烈 on 2020/6/16
-/// contact me by email 1981462002@qq.com
 /// 说明: 
 
 class DefaultCollectPage extends StatelessWidget {

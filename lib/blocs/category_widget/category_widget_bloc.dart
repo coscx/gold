@@ -7,9 +7,6 @@ import 'package:flutter_unit/repositories/itf/category_repository.dart';
 import 'category_widget_event.dart';
 import 'category_widget_state.dart';
 
-/// create by 张风捷特烈 on 2020-04-21
-/// contact me by email 1981462002@qq.com
-/// 说明:
 
 class CategoryWidgetBloc
     extends Bloc<CategoryWidgetEvent, CategoryWidgetState> {

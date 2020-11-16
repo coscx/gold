@@ -8,8 +8,6 @@ import 'package:flutter_unit/blocs/point/point_event.dart';
 import 'package:flutter_unit/components/flutter/no_div_expansion_tile.dart';
 import 'package:flutter_unit/views/common/unit_drawer_header.dart';
 
-/// create by 张风捷特烈 on 2020-03-26
-/// contact me by email 1981462002@qq.com
 /// 说明:
 
 class HomeDrawer extends StatelessWidget {

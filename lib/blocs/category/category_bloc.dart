@@ -8,9 +8,6 @@ import 'package:flutter_unit/storage/po/category_po.dart';
 import 'category_event.dart';
 import 'category_state.dart';
 
-/// create by 张风捷特烈 on 2020-04-21
-/// contact me by email 1981462002@qq.com
-/// 说明:
 
 class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   final CategoryRepository repository;

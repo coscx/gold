@@ -7,8 +7,7 @@ import 'package:flutter_unit/components/permanent/circle_image.dart';
 import 'package:flutter_unit/components/permanent/color_wrapper.dart';
 import 'package:flutter_unit/model/github/issue.dart';
 
-/// create by 张风捷特烈 on 2020/9/3
-/// contact me by email 1981462002@qq.com
+
 /// 说明: 
 
 class IssueItem extends StatelessWidget {

@@ -7,8 +7,6 @@ import 'package:flutter_unit/components/permanent/circle.dart';
 import 'package:flutter_unit/components/permanent/feedback_widget.dart';
 import 'package:flutter_unit/views/pages/gallery/picture_frame.dart';
 
-/// create by 张风捷特烈 on 2020/10/21
-/// contact me by email 1981462002@qq.com
 /// 说明:
 
 class OverlayToolWrapper extends StatefulWidget {

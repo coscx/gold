@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-/// create by 张风捷特烈 on 2020-04-17
-/// contact me by email 1981462002@qq.com
+
 /// 说明: 收藏夹数据库-数据模型
 
 // """

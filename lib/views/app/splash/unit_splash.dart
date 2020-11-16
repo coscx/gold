@@ -5,8 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_unit/app/router.dart';
 import 'unit_paint.dart';
 
-/// create by 张风捷特烈 on 2020-03-07
-/// contact me by email 1981462002@qq.com
 /// 说明: app 闪屏页
 
 class UnitSplash extends StatefulWidget {
@@ -84,7 +82,7 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
 
   Widget _buildText(double winH, double winW) {
     final shadowStyle = TextStyle(
-      fontSize: 45,
+      fontSize: 40,
       color: Theme.of(context).primaryColor,
       fontWeight: FontWeight.bold,
       shadows: [
@@ -102,7 +100,7 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
           duration: const Duration(milliseconds: 600),
           opacity: _animEnd ? 1.0 : 0.0,
           child: Text(
-            'Flutter Unit',
+            'GUGU管理端',
             style: shadowStyle,
           )),
     );
@@ -149,7 +147,7 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
         child: AnimatedOpacity(
             duration: const Duration(milliseconds: 300),
             opacity: _animEnd ? 1.0 : 0.0,
-            child: const Text("Power By 张风捷特烈",
+            child: const Text("Power off GUGU Group",
                 style: TextStyle(
                     color: Colors.grey,
                     shadows: [

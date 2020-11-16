@@ -7,8 +7,6 @@ import 'package:flutter_unit/model/widget_model.dart';
 import 'coupon_widget_list_item.dart';
 import 'techno_widget_list_item.dart';
 
-/// create by 张风捷特烈 on 2020/4/28
-/// contact me by email 1981462002@qq.com
 /// 说明:
 
 class HomeItemSupport {

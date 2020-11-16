@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-04-22
-/// contact me by email 1981462002@qq.com
+
 /// 说明: 
 
 class UnitDrawerHeader extends StatelessWidget {

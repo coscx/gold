@@ -6,8 +6,7 @@ import 'package:flutter_unit/components/permanent/circle_image.dart';
 import 'package:flutter_unit/components/permanent/feedback_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-/// create by 张风捷特烈 on 2020/6/16
-/// contact me by email 1981462002@qq.com
+
 /// 说明: 
 
 class VersionInfo extends StatelessWidget {

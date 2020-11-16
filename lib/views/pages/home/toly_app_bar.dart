@@ -39,13 +39,13 @@ class _TolyAppBarState extends State<TolyAppBar>
   ];
 
   static const List<String> info = [
-    'Stles',
-    'Stful',
-    'Scrow',
-    'Mcrow',
-    'Sliver',
-    'Proxy',
-    'Other'
+    '照片审核',
+    '用户投诉',
+    '用户反馈',
+    '朋友圈投诉',
+    '实名认证',
+    '广场',
+    '用户'
   ];
 
 

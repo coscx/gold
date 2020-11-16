@@ -6,8 +6,6 @@ import 'package:flutter_unit/repositories/impl/catagory_db_repository.dart';
 import 'package:flutter_unit/repositories/impl/widget_db_repository.dart';
 import 'package:flutter_unit/storage/app_storage.dart';
 
-/// create by 张风捷特烈 on 2020/4/28
-/// contact me by email 1981462002@qq.com
 /// 说明: Bloc提供器包裹层
 
 final storage = AppStorage();

@@ -12,8 +12,6 @@ import 'package:flutter_unit/model/github/repository.dart';
 import 'issue_item.dart';
 import 'repo_widget.dart';
 
-/// create by 张风捷特烈 on 2020/6/17
-/// contact me by email 1981462002@qq.com
 /// 说明:
 
 class IssuesPointPage extends StatelessWidget {

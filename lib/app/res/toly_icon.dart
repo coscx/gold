@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-//Power By 张风捷特烈--- Generated file. Do not edit.
 
 class TolyIcon {
 

@@ -7,8 +7,6 @@ import 'package:flutter_unit/blocs/point/point_state.dart';
 import 'point_event.dart';
 
 
-/// create by 张风捷特烈 on 2020-09-03
-/// contact me by email 1981462002@qq.com
 /// 说明:
 
 class PointBloc extends Bloc<PointEvent, PointState> {

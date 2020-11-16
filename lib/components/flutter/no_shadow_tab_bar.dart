@@ -1,5 +1,4 @@
-/// create by 张风捷特烈 on 2020-03-16
-/// contact me by email 1981462002@qq.com
+
 /// 说明: 
 
 // Copyright 2015 The Chromium Authors. All rights reserved.

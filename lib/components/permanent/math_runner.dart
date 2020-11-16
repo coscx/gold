@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/10/24
-/// contact me by email 1981462002@qq.com
+
 /// 说明:
 
 typedef FunNum1 = Function(double t);

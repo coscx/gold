@@ -3,8 +3,6 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-03-06
-/// contact me by email 1981462002@qq.com
 /// 说明: 打个洞
 /// offset 洞的偏移量分率 x,y 在 0~1 之间
 /// size 洞的大小

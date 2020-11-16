@@ -5,9 +5,6 @@ import 'package:flutter_unit/model/github/issue_comment.dart';
 import 'package:flutter_unit/model/github/issue.dart';
 import 'package:flutter_unit/model/github/repository.dart';
 
-/// create by 张风捷特烈 on 2020/6/17
-/// contact me by email 1981462002@qq.com
-/// 说明:
 
 const kBaseUrl = 'http://119.45.173.197:8080/api/v1';
 

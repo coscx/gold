@@ -9,8 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
 
-/// create by 张风捷特烈 on 2020-03-04
-/// contact me by email 1981462002@qq.com
+
 /// 说明: 本地存储访问对象,用于读取配置数据，及初始化Database和SharedPreferences
 
 class AppStorage {

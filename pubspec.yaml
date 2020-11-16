@@ -36,6 +36,7 @@ dependencies:
   flutter_spinkit: ^4.1.2+1 #loading
   flutter_markdown: ^0.4.4 #markdown
   dio: ^3.0.9 #dio
+  flutter_webview_plugin: ^0.3.11
 dev_dependencies:
   flutter_test:
     sdk: flutter

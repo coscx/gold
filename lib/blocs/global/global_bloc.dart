@@ -7,8 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'global_event.dart';
 import 'global_state.dart';
 
-/// create by 张风捷特烈 on 2020-03-22
-/// contact me by email 1981462002@qq.com
+
 /// 说明: 全局信息的bloc
 
 class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {

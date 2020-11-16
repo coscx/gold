@@ -11,8 +11,7 @@ import 'package:toggle_rotate/toggle_rotate.dart';
 import '../permanent/feedback_widget.dart';
 import '../permanent/code/highlighter_style.dart';
 
-/// create by 张风捷特烈 on 2020-04-13
-/// contact me by email 1981462002@qq.com
+
 /// 说明: 一个Widget的知识点对应的界面
 
 class WidgetNodePanel extends StatefulWidget {
