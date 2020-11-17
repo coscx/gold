@@ -1,10 +1,12 @@
-
+import 'package:flutter_unit/app/router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_unit/app/res/toly_icon.dart';
+import 'package:flutter_unit/blocs/login/login_state.dart';
 import 'package:flutter_unit/components/permanent/feedback_widget.dart';
-
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_unit/blocs/login/login_bloc.dart';
+import 'package:flutter_unit/blocs/login/login_event.dart';
 
 class LoginFrom extends StatefulWidget {
   @override
@@ -19,12 +21,42 @@ class _LoginFromState extends State<LoginFrom> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return
+
+      BlocListener<LoginBloc, LoginState>(
+        listener: (ctx, state) {
+            if (state is LoginFailed) {
+              Scaffold.of(context).showSnackBar(SnackBar(
+              content: Text('${state.reason}'),
+              backgroundColor: Colors.red,
+          ));
+              BlocProvider.of<LoginBloc>(context).add(
+                EventLoginFailed(),
+              );
+        }
+                 if (state is LoginSuccess) {
+                   BlocProvider.of<LoginBloc>(context).add(
+                     EventLoginFailed(),
+                   );
+                Navigator.of(context).pushReplacementNamed(UnitRouter.about_me);
+            }
+        },
+        child: BlocBuilder<LoginBloc, LoginState>(
+              builder:_buildLoginByState
+          )
+          );
+  }
+
+
+  Widget _buildLoginByState(BuildContext context,LoginState state) {
+    return Stack(
+      children: [
+      Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Text("FlutterUnit 登录",style: TextStyle(fontSize: 25),),
+        Text("登录",style: TextStyle(fontSize: 25),),
         SizedBox(height: 5,),
-        Text("请使用github用户名登录",style: TextStyle(color: Colors.grey),),
+        Text("请使用手机号登录",style: TextStyle(color: Colors.grey),),
         SizedBox(height:20,),
         buildUsernameInput(),
         Stack(
@@ -54,24 +86,43 @@ class _LoginFromState extends State<LoginFrom> {
             )
           ],
         ),
-        _buildBtn(),
-        buildOtherLogin()
+        _buildBtn(state),
+        buildOtherLogin(),
+        Container(
+          child: state is LoginLoading
+              ? CircularProgressIndicator()
+              : null,
+        )
+
       ],
+    ),
+
+
+      ],
+
+
     );
+
   }
+
 
   void _doLogIn() {
 
     print('---用户名:${_usernameController.text}------密码：${_passwordController.text}---');
-
-//    BlocProvider.of<LoginBloc>(context).add(
-//      EventLogin(
-//          username: _usernameController.text,
-//          password: _passwordController.text),
-//    );
+    if (_usernameController.text.isEmpty){
+      return;
+    }
+    if (_passwordController.text.isEmpty){
+      return;
+    }
+   BlocProvider.of<LoginBloc>(context).add(
+     EventLogin(
+         username: _usernameController.text,
+         password: _passwordController.text),
+   );
   }
 
-  Widget _buildBtn() => Container(
+  Widget _buildBtn(LoginState state) => Container(
     margin: EdgeInsets.only(top: 10, left: 10, right: 10,bottom: 0),
     height: 40,
     width: MediaQuery.of(context).size.width,
@@ -81,7 +132,7 @@ class _LoginFromState extends State<LoginFrom> {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20))),
       color: Colors.blue,
-      onPressed: _doLogIn,
+      onPressed: state is LoginInital?  _doLogIn :null,
       child: Text("登   录",
           style: TextStyle(color: Colors.white, fontSize: 18)),
     ),

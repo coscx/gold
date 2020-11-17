@@ -11,6 +11,12 @@ export 'category_widget/category_widget_bloc.dart';
 export 'category_widget/category_widget_state.dart';
 export 'category_widget/category_widget_event.dart';
 
+
+export 'login/login_bloc.dart';
+export 'login/login_state.dart';
+export 'login/login_event.dart';
+
+
 export 'collect/collect_bloc.dart';
 export 'collect/collect_state.dart';
 export 'collect/collect_event.dart';

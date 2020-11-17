@@ -6,10 +6,19 @@ import 'package:flutter_unit/model/github/issue.dart';
 import 'package:flutter_unit/model/github/repository.dart';
 
 
-const kBaseUrl = 'http://119.45.173.197:8080/api/v1';
+const kBaseUrl = 'http://as.gugu2019.com';
 
 class IssuesApi {
   static Dio dio = Dio(BaseOptions(baseUrl: kBaseUrl));
+
+  static Future<Map<String,dynamic>> login( String username, String password) async {
+    String repoStr;
+    var data={'username':username,'password':password};
+    Response<dynamic> rep = await dio.post('/admin/auth/applogin.html',queryParameters:data );
+     var datas = json.decode(rep.data);
+
+    return datas;
+  }
 
   static Future<Repository> getRepoFlutterUnit() async {
     Response<dynamic> rep = await dio.get('/repository/name/FlutterUnit');
@@ -31,4 +40,8 @@ class IssuesApi {
         .map((e) => IssueComment.fromJson(json.decode(e['pointCommentData'])))
         .toList();
   }
+
+
+
+
 }
