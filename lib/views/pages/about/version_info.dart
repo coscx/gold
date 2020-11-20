@@ -51,7 +51,7 @@ class VersionInfo extends StatelessWidget {
       spacing: 10,
       children: <Widget>[
         CircleImage(image: AssetImage("assets/images/icon_head.webp"),size: 80,),
-        Text('Flutter Unit',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+        Text('GUGU Manager',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
         Text('Version ${Cons.version}'),
       ],
     );
@@ -111,7 +111,7 @@ class VersionInfo extends StatelessWidget {
               _launchURL("https://github.com/toly1994328/FlutterUnit");
             },
             child: Text('《查看本项目Github仓库》',style: TextStyle(fontSize: 12,color: Color(0xff616C84),),)),
-        Text('Power By 张风捷特烈',style: TextStyle(fontSize: 12,color: Colors.grey),),
+        Text('Power By GUGU Team',style: TextStyle(fontSize: 12,color: Colors.grey),),
         Text('Copyright © 2008-2020 Toly1994',style: TextStyle(fontSize: 12,color: Colors.grey),),
       ],
     );

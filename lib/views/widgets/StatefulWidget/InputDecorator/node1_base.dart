@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/22
+/// create by GUGU Team on 2020/7/22
 /// contact me by email 1981462002@qq.com
 /// 说明: 231 InputDecorator 输入装饰 在外层包裹输入的装饰,是TextField的底层核心组件之一，一般不单独使用。
 //    {

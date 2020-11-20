@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-03-23
+/// create by GUGU Team on 2020-03-23
 /// contact me by email 1981462002@qq.com
 /// 说明: 225 相关属性变化时具有动画效果的PhysicalModel组件，本质是PhysicalModel和动画结合的产物。可指定阴影、影深、圆角、动画时长、结束回调等属性。
 //    {

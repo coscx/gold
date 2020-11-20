@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-/// create by 张风捷特烈 on 2020/8/2
+/// create by GUGU Team on 2020/8/2
 /// contact me by email 1981462002@qq.com
 /// 说明: 253 Scrollable 可滑动组件 实现了一个可滚动组件的交互模型,需要viewportBuilder进的viewport的构造。是ScrollView的核心实现组件之一，一般不直接使用。
 

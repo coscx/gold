@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-03-29
+/// create by GUGU Team on 2020-03-29
 /// contact me by email 1981462002@qq.com
 /// 说明:
 
@@ -16,7 +16,7 @@ class ShadowText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "张风捷特烈",
+      "GUGU Team",
       style: TextStyle(
           fontSize: 50,
           color: Colors.white,

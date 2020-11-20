@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/9/21
+/// create by GUGU Team on 2020/9/21
 /// contact me by email 1981462002@qq.com
 /// 说明: 301 SliverAnimatedList Sliver动画列表 在插入或删除项目时使其有动画效果的sliver组件。
 //    {

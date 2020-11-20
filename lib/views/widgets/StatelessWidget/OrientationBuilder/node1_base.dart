@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/21
+/// create by GUGU Team on 2020/7/21
 /// contact me by email 1981462002@qq.com
 /// 说明: 203 OrientationBuilder 能够回调父组件是横向还是纵向,可以据此来构建不同的子组件。
 //    {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/8/14
+/// create by GUGU Team on 2020/8/14
 /// contact me by email 1981462002@qq.com
 /// 说明: PageStorage 210 0 页面存储器 可以将页面状态进行存储,在切页时可以保持状态。源码中在ScrollView、PageView、ExpansionTile等皆有应用。
 //    {

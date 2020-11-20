@@ -1,5 +1,5 @@
 
-/// create by 张风捷特烈 on 2020-03-26
+/// create by GUGU Team on 2020-03-26
 /// contact me by email 1981462002@qq.com
 /// 说明: 
 
@@ -74,7 +74,7 @@ class CustomDrawerHeader extends StatelessWidget {
             fit: BoxFit.cover),
       ),
       child: Text(
-        '张风捷特烈',
+        'GUGU Team',
         style: TextStyle(fontSize: 24, color: Colors.white, shadows: [
           Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 3)
         ]),

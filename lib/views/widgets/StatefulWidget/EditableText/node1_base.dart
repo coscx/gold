@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/22
+/// create by GUGU Team on 2020/7/22
 /// contact me by email 1981462002@qq.com
 /// 说明: 244 EditableText 可编辑文字 可以编辑的文字,是TextField的底层最核心组件，一般不单独使用。
 //    {

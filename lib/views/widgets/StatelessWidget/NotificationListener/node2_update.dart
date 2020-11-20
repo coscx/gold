@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/8/14
+/// create by GUGU Team on 2020/8/14
 /// contact me by email 1981462002@qq.com
 /// 说明: NotificationListener 210 0 通知监听器 可指定Notification子泛型T,监听该类型的变化。Flutter内置很多滑动的Notification,当然你也可以自定义Notification进行监听。
 //    {

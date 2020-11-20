@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/22
+/// create by GUGU Team on 2020/7/22
 /// contact me by email 1981462002@qq.com
 /// 说明: 263 FractionalTranslation 通过offset属性将子组件进行偏移,偏移量为OffSet横纵*子组件大小。
 //    {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-03-29
+/// create by GUGU Team on 2020-03-29
 /// contact me by email 1981462002@qq.com
 /// 说明:
 
@@ -25,7 +25,7 @@ class TextDirectionText extends StatelessWidget {
         color: Colors.cyanAccent.withAlpha(33),
         height: 120 * 0.618,
         child: Text(
-          " 张风捷特烈 toly " * 10,
+          " GUGU Team toly " * 10,
           textDirection: e,
           maxLines: 3,
           overflow: TextOverflow.ellipsis,

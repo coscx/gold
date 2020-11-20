@@ -26,3 +26,16 @@ class EventTabPhoto extends HomeEvent {
   EventTabPhoto(this.family);
 
 }
+class EventCheckUser extends HomeEvent {
+  final Map<String,dynamic> user;
+  final int status;
+  EventCheckUser(this.user,this.status);
+
+}
+
+class EventDelImg extends HomeEvent {
+  final Map<String,dynamic> user;
+  final int status;
+  EventDelImg(this.user,this.status);
+
+}

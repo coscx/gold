@@ -1,5 +1,5 @@
 
-/// create by 张风捷特烈 on 2020/4/25
+/// create by GUGU Team on 2020/4/25
 /// contact me by email 1981462002@qq.com
 /// 说明: 
 
@@ -26,12 +26,12 @@ class AboutListTileDemo extends StatelessWidget {
       applicationIcon: FlutterLogo(),
       applicationName: 'Flutter Unit',
       applicationVersion: 'v0.0.1',
-      applicationLegalese: 'Copyright© 2018-2020 张风捷特烈',
+      applicationLegalese: 'Copyright© 2018-2020 GUGU Team',
       aboutBoxChildren: [
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Text(
-            '      FlutterUnit是【张风捷特烈】的开源项目，'
+            '      FlutterUnit是【GUGU Team】的开源项目，'
                 '收录Flutter的200+组件，并附加详细介绍以及操作交互，'
                 '希望帮助广大编程爱好者入门Flutter。'
                 '更多知识可以关注掘金账号、公众号【编程之王】。',

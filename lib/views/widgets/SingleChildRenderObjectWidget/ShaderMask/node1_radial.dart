@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-04-12
+/// create by GUGU Team on 2020-04-12
 /// contact me by email 1981462002@qq.com
 /// 说明:
 ///
@@ -32,7 +32,7 @@ class RadialShaderMask extends StatelessWidget {
         ShaderMask(
           shaderCallback: _buildShader,
           child: Text(
-            '张风捷特烈',
+            'GUGU Team',
             style: TextStyle(fontSize: 40, color: Colors.white),
           ),
         ),

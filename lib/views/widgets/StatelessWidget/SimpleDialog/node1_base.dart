@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-03-24
+/// create by GUGU Team on 2020-03-24
 /// contact me by email 1981462002@qq.com
 /// 说明:
 ///
@@ -24,7 +24,7 @@ class CustomSimpleDialog extends StatelessWidget {
   final info = [
     '性别:    男     未婚',
     '微信:    zdl1994328',
-    "掘金:    张风捷特烈",
+    "掘金:    GUGU Team",
     "github:    toly1994328",
     "邮箱:    1981462008@qq.com",
   ];
@@ -112,7 +112,7 @@ class CustomSimpleDialog extends StatelessWidget {
         ),
         Expanded(
             child: Text(
-          "张风捷特烈",
+          "GUGU Team",
           style: TextStyle(fontSize: 18),
         )),
         CloseButton()

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/22
+/// create by GUGU Team on 2020/7/22
 /// contact me by email 1981462002@qq.com
 /// 说明: 218 CupertinoNavigationBarBackButton Cupertino风格的导航栏返回按钮,可指定颜色和点击事件,一般不单独使用。
 //    {

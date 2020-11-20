@@ -9,6 +9,8 @@ import 'package:flutter_unit/blocs/collect/collect_bloc.dart';
 import 'package:flutter_unit/blocs/collect/collect_state.dart';
 import 'package:flutter_unit/blocs/detail/detail_bloc.dart';
 import 'package:flutter_unit/blocs/detail/detail_event.dart';
+import 'package:flutter_unit/blocs/home/home_bloc.dart';
+import 'package:flutter_unit/blocs/home/home_event.dart';
 import 'package:flutter_unit/components/permanent/circle_image.dart';
 import 'package:flutter_unit/components/permanent/circle_text.dart';
 import 'package:flutter_unit/components/permanent/feedback_widget.dart';
@@ -68,7 +70,7 @@ class PhotoWidgetListItem extends StatelessWidget {
       )
     );
   }
-Widget buildCard (BuildContext context,String img){
+Widget buildCard (BuildContext context,Map<String,dynamic> img){
     return     Stack(
         children: <Widget>[
           Container(
@@ -80,11 +82,11 @@ Widget buildCard (BuildContext context,String img){
                     FeedbackWidget(
                       onPressed: () {
                         Navigator.of(context).push(PageRouteBuilder(
-                            pageBuilder: (c, a, s) => PreviewImagesWidget([img],initialPage: 1,)));
+                            pageBuilder: (c, a, s) => PreviewImagesWidget([img['imagepath']],initialPage: 1,)));
 
                       },
                       child: Container(
-                      child: CachedNetworkImage(imageUrl: img,
+                      child: CachedNetworkImage(imageUrl: img['imagepath'],
                       width: 80,
                       height: 150,
                       ),
@@ -108,12 +110,12 @@ Widget buildCard (BuildContext context,String img){
           ),
 
           Positioned(
-              top: 15,
-              right: 0,
+              top: 5,
+              right: 5,
               child:
               FeedbackWidget(
                 onPressed: () {
-                  _deletePhoto(context);
+                  _deletePhoto(context,img);
                 },
                 child: const Icon(
                   CupertinoIcons.delete_solid,
@@ -129,9 +131,9 @@ Widget buildCard (BuildContext context,String img){
   Widget buildMiddle (BuildContext context,){
     List<dynamic> imgList =photo['imageurl'];
     List<Widget> list = [];
-    imgList.map((e) => {
+    imgList.map((images) => {
 
-      list.add( buildCard(context,e['imagepath']))
+      list.add( buildCard(context,images))
 
     }
 
@@ -158,9 +160,9 @@ Widget buildCard (BuildContext context,String img){
           children: [
 
             buildRefuseButton(context,"拒绝",Colors.red),
-            buildButton(context,"通过1",Colors.green),
-            buildButton(context,"通过2",Colors.blue),
-            buildButton(context,"通过3",Colors.purple),
+            build100Button(context,"通过1",Colors.green),
+            build80Button(context,"通过2",Colors.blue),
+            build60Button(context,"通过3",Colors.purple),
             buildHideButton(context,"隐藏",Colors.deepPurple),
 
           ],
@@ -169,7 +171,7 @@ Widget buildCard (BuildContext context,String img){
         ]
     );
   }
-  _deletePhoto(BuildContext context) {
+  _deletePhoto(BuildContext context,Map<String,dynamic> img) {
     showDialog(
         context: context,
         builder: (ctx) => Dialog(
@@ -182,7 +184,7 @@ Widget buildCard (BuildContext context,String img){
               title: '删除图片',
               content: '是否确定继续执行?',
               onSubmit: () {
-
+                BlocProvider.of<HomeBloc>(context).add(EventDelImg(img,1));
                 Navigator.of(context).pop();
               },
             ),
@@ -202,7 +204,7 @@ Widget buildCard (BuildContext context,String img){
               title: '拒绝此用户',
               content: '是否确定继续执行?',
               onSubmit: () {
-
+                BlocProvider.of<HomeBloc>(context).add(EventCheckUser(photo,1));
                 Navigator.of(context).pop();
               },
             ),
@@ -222,7 +224,7 @@ Widget buildCard (BuildContext context,String img){
               title: '隐藏该用户',
               content: '是否确定继续执行?',
               onSubmit: () {
-
+                BlocProvider.of<HomeBloc>(context).add(EventCheckUser(photo,5));
                 Navigator.of(context).pop();
               },
             ),
@@ -247,6 +249,60 @@ Widget buildCard (BuildContext context,String img){
       ],
       );
 }
+  Widget build100Button(BuildContext context,String txt,MaterialColor color){
+    return    Column(
+      children: [
+
+        RaisedButton(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          color: color,
+          onPressed: (){
+            BlocProvider.of<HomeBloc>(context).add(EventCheckUser(photo,2));
+          },
+          child: Text(txt,
+              style: TextStyle(color: Colors.white, fontSize: 18)),
+        ),
+      ],
+    );
+  }
+  Widget build80Button(BuildContext context,String txt,MaterialColor color){
+    return    Column(
+      children: [
+
+        RaisedButton(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          color: color,
+          onPressed: (){
+            BlocProvider.of<HomeBloc>(context).add(EventCheckUser(photo,3));
+          },
+          child: Text(txt,
+              style: TextStyle(color: Colors.white, fontSize: 18)),
+        ),
+      ],
+    );
+  }
+  Widget build60Button(BuildContext context,String txt,MaterialColor color){
+    return    Column(
+      children: [
+
+        RaisedButton(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          color: color,
+          onPressed: (){
+            BlocProvider.of<HomeBloc>(context).add(EventCheckUser(photo,4));
+          },
+          child: Text(txt,
+              style: TextStyle(color: Colors.white, fontSize: 18)),
+        ),
+      ],
+    );
+  }
   Widget buildRefuseButton(BuildContext context,String txt,MaterialColor color){
     return    Column(
       children: [

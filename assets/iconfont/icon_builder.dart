@@ -9,7 +9,7 @@ main() async{
   String outFile='lib/app/res/$fileName.dart';//输出文件地址
 
   String result = """import 'package:flutter/widgets.dart';
-//Power By 张风捷特烈--- Generated file. Do not edit.
+//Power By GUGU Team--- Generated file. Do not edit.
 
 class $fontName {
 

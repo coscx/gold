@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/22
+/// create by GUGU Team on 2020/7/22
 /// contact me by email 1981462002@qq.com
 /// 说明: 208 Title 0 该组件用于描述app在操作系统中的名称,可以在应用栏列表里看到效果。MaterialApp中的title字段效果的根源是该组件。
 //    {
@@ -16,9 +16,9 @@ class TitleDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Title(
-          title: '张风捷特烈',
+          title: 'GUGU Team',
           color: Color(0xFF9C27B0),
-          child: Center(child: Text('应用菜单栏中该页的名称为: 张风捷特烈'))),
+          child: Center(child: Text('应用菜单栏中该页的名称为: GUGU Team'))),
     );
   }
 }

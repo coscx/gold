@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/22
+/// create by GUGU Team on 2020/7/22
 /// contact me by email 1981462002@qq.com
 /// 说明: 245 CupertinoTextField 1 Cupertino风格的输入框,属性和TextField类似,可指定控制器、文字样式、装饰线、行数限制、游标样式等。接收输入变化、完成输入等事件。
 //    {

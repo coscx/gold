@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-03-25
+/// create by GUGU Team on 2020-03-25
 /// contact me by email 1981462002@qq.com
 /// 说明:
 //    {
@@ -24,7 +24,7 @@ class CustomSimpleDialogOption extends StatelessWidget {
           color: Colors.grey.withAlpha(33),
           child: SimpleDialogOption(
               onPressed: () => Navigator.of(context).pushNamed('AboutMePage'),
-              child: Text('张风捷特烈')),
+              child: Text('GUGU Team')),
         ),
         Container(
           height: 50,

@@ -79,7 +79,7 @@ class AboutAppPage extends StatelessWidget {
           Spacer(),
           FeedbackWidget(
             onPressed: () =>
-                _launchURL("mailto:1981462002@qq.com?subject=来自Flutter Unit"),
+                _launchURL("http://guguteam.com"),
             child: Icon(
               TolyIcon.icon_email,
               size: 20,
@@ -113,7 +113,7 @@ class AboutAppPage extends StatelessWidget {
             children: <Widget>[
               FeedbackWidget(
                   onPressed: () =>
-                      _launchURL("https://github.com/toly1994328/FlutterUnit"),
+                      _launchURL("https://github.com/coscx/gold"),
                   child: Wrap(
                     direction: Axis.vertical,
                     crossAxisAlignment: WrapCrossAlignment.center,
@@ -132,52 +132,58 @@ class AboutAppPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Flutter Unit',
+              'Flutter',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20),
             Text(
-              'The Unity Of Flutter, The Unity Of Coder.',
+              'APP简介',
               style: TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 10),
-            Text(
-              'Flutter的联合，编程者的联合。',
-              style: TextStyle(fontSize: 16),
+
+            Divider(
+              height: 20,
+            ),
+            InfoPanel(
+              title: '简介',
+              info:          '      GUGU是一款国际社交APP，倾向用户群体90-00后国际化文化社交平台，GUGU社交基于大数据智能推荐、从人际网到恋爱约会，再到文化传播，多模式切换进行匹配好友，帮助用户结识异国他乡的朋友与文化 ，GUGU尊重女士优先，在这里女性会备受尊重，严格的聊天信誉评价系统，让社交更加纯洁。GUGU国际社交APP，可定位任何国家任何地区快速认识当地人的一款软件，基于人际网，约会恋爱，文化传播于一身的平台，你可以在这里认识不同国家兴趣爱好相同的人，闺蜜或是恋人，也可以是一起打球的兄弟，喜欢养狗的人或是异国同行设计师，互相喜欢方可匹配，在这里世界都近在咫尺，无缝连接，不用担心语言，快捷聊天翻译，让沟通不再是麻烦的问题。',
             ),
             Divider(
               height: 20,
             ),
             InfoPanel(
-              title: '项目简介',
-              info:          '      Flutter Unit 是一个非盈利性的开源项目，'
-                  '旨在提供全面的Flutter学习指南及编程者的交流技术的接口。'
-                  '由【张风捷特烈】提供技术支持和全权维护。唯一开源网站网址: '
-                  'https://github.com/toly1994328/FlutterUnit',
+                title: '产品功能',
+                info:    '1、GUGU划片配对。\n'
+                    'GUGU划片含有三个模式，分别是：A人际网、B恋爱约会、C文化传播。划片快捷匹配相同爱好的朋友，大数据分类用户。炫酷的特效，简洁实用的界面，GUGU极力打造一款最实用的标签化国际社交软件。\n'
+                    '2、问答标签\n'
+                    '为每个用户提供包括星座爱好学历身高体重等几十上百的标签。\n'
+                    '3、雷达定位\n'
+                    '互相匹配成功的好友可以在雷达上看见对方的map，在地图上快捷聊天打招呼。\n'
+                    '4、匿名评价\n'
+                    '互相匹配成功后互相聊天后可以匿名评价对方，远离不礼貌无素质的人，让社交更纯净！\n'
+                 ,
             ),
             Divider(
               height: 20,
             ),
             InfoPanel(
-                title: 'Flutter Unit 1.0',
-                info:    'Flutter Unit 1.0 核心计划是收录widget，即widget集录。'
-                    '目前收录组件204个，均可在app中进行查看。'
-                    '项目中提供widget图鉴文件可供下载参考。功能主要如下:\n'
-                    '○  200+的Flutter 组件收录和详情介绍。\n'
-                    '○  对一些重要的组件提供操作体验。\n'
-                    '○  link to功能，查看组件时可以切换到相关组件。\n'
-                    '○  组件收藏和取消收藏功能。\n'
-                    '○  主题、字体设置，代码风格等全局状态管理。\n'
-                    '○  搜索功能和组件星级分类。',
-            ),
-            Divider(
-              height: 20,
-            ),
-            InfoPanel(
-              title: 'Flutter Unit 2.0 计划',
-              info:    'Flutter Unit 2.0 尚在计划之中，如果说1.0是本王单枪匹马，'
-                  '那2.0将是Flutter爱好者的共同努力。后面陆续会发布一些征集方案，'
-                  '包括属性、布局、绘制、bug、要点集录等。吾想让Unit 成为一个Flutter的圣地，纯粹而强大,期待与你的共同携手。',
+              title: '软件特点',
+              info:    '1、随意定位异地坐标。'+
+
+              '2、与好友之间共享实时位置。'+
+
+            '3、匿名评价好友。'+
+
+            '4、随意切换交往模式。'+
+
+            '5、一键翻译对话。'+
+
+            '6、颜色区分好友关系'+
+
+            '7、标签分类人群'+
+
+             ' 8、用户快速制作分享优质文章'
+                 ,
             )
           ],
         ),

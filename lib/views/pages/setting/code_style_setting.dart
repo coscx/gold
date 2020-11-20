@@ -20,7 +20,7 @@ class Hello {
   final int age;//年龄
 
   Hello({
-    this.name = "张风捷特烈",
+    this.name = "GUGU Team",
     this.age = 26,
     this.county = _kCounty
   });

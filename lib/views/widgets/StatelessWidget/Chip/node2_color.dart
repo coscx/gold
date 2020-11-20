@@ -1,6 +1,6 @@
 
 
-/// create by 张风捷特烈 on 2020/4/25
+/// create by GUGU Team on 2020/4/25
 /// contact me by email 1981462002@qq.com
 /// 说明: 
 
@@ -21,7 +21,7 @@ class ColorOfChip extends StatelessWidget {
       children: <Widget>[
         Chip(
           avatar: Image.asset("assets/images/icon_head.webp"),
-          label: Text("张风捷特烈"),
+          label: Text("GUGU Team"),
           padding: EdgeInsets.all(5),
           labelPadding: EdgeInsets.all(5),
           backgroundColor: Colors.grey.withAlpha(66),
@@ -30,7 +30,7 @@ class ColorOfChip extends StatelessWidget {
         ),
         Chip(
           avatar: Image.asset("assets/images/icon_head.webp"),
-          label: Text("张风捷特烈"),
+          label: Text("GUGU Team"),
           padding: EdgeInsets.all(5),
           labelPadding: EdgeInsets.all(5),
           backgroundColor: Colors.cyanAccent.withAlpha(11),

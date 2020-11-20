@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/20
+/// create by GUGU Team on 2020/7/20
 /// contact me by email 1981462002@qq.com
 /// 说明: NavigationToolbar 214 左中右模式的通用结构组件,可指定中间组件距左侧边距及是否居中。源码在AppBar等导航条结构中有使用它。
 //    {

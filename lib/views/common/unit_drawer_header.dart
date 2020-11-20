@@ -30,7 +30,7 @@ class UnitDrawerHeader extends StatelessWidget {
                 size: 35,
               ),
               Text(
-                'Flutter Unit',
+                'Flutter',
                 style: TextStyle(fontSize: 24, color: Colors.white, shadows: [
                   Shadow(
                       color: Colors.black,
@@ -44,7 +44,7 @@ class UnitDrawerHeader extends StatelessWidget {
             height: 15,
           ),
           Text(
-            'The Unity Of Flutter, The Unity Of Coder.',
+            'Flutter',
             style: TextStyle(fontSize: 15, color: Colors.white, shadows: [
               Shadow(color: color, offset: Offset(.5, .5), blurRadius: 1)
             ]),
@@ -53,7 +53,7 @@ class UnitDrawerHeader extends StatelessWidget {
             height: 5,
           ),
           Text(
-            'Flutter的联合，编程者的联合。',
+            'Flutter make dream',
             style: TextStyle(fontSize: 15, color: Colors.white, shadows: [
               Shadow(color: color, offset: Offset(.5, .5), blurRadius: 1)
             ]),
@@ -67,7 +67,7 @@ class UnitDrawerHeader extends StatelessWidget {
                 flex: 5,
               ),
               Text(
-                '—— 张风捷特烈',
+                '—— GUGU Team',
                 style: TextStyle(fontSize: 15, color: Colors.white, shadows: [
                   Shadow(
                       color: Colors.orangeAccent,

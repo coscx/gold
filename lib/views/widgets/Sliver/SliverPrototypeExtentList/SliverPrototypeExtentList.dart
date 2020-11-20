@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/9/21
+/// create by GUGU Team on 2020/9/21
 /// contact me by email 1981462002@qq.com
 /// 说明: 314 SliverPrototypeExtentList Sliver原型延伸列表 prototypeItem属性是一个Widget,该Widget负责在主轴方向上约束item尺寸，但会不显示出来。delegate接受一个SliverChildDelegate完成item的创建。
 //    {
@@ -69,7 +69,7 @@ class _SliverPrototypeExtentListDemoState
     return SliverAppBar(
       expandedHeight: 150.0,
       leading: _buildLeading(),
-      title: Text('张风捷特烈'),
+      title: Text('GUGU Team'),
       actions: _buildActions(),
       elevation: 5,
       pinned: true,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-03-30
+/// create by GUGU Team on 2020-03-30
 /// contact me by email 1981462002@qq.com
 /// 说明:
 //    {
@@ -75,7 +75,7 @@ class CustomScrollViewDemo extends StatelessWidget {
         titlePadding: EdgeInsets.only(left: 55, bottom: 15), //标题边距
         collapseMode: CollapseMode.parallax, //视差效果
         title: Text(
-          '张风捷特烈',
+          'GUGU Team',
           style: TextStyle(color: Colors.black, //标题
               shadows: [
                 Shadow(color: Colors.blue, offset: Offset(1, 1), blurRadius: 2)

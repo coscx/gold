@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/4/27
+/// create by GUGU Team on 2020/4/27
 /// contact me by email 1981462002@qq.com
 /// 说明:
 
@@ -23,7 +23,7 @@ class CustomUAGHP extends StatelessWidget {
         accountName: Container(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            "张风捷特烈",
+            "GUGU Team",
             style:
             TextStyle(color: Colors.orangeAccent, fontSize: 22, shadows: [
               Shadow(

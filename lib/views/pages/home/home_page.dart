@@ -38,19 +38,39 @@ class _HomePageState extends State<HomePage>
     super.build(context);
 
     return Scaffold(
-        body: BlocBuilder<HomeBloc, HomeState>(builder: (ctx, state) {
+        body:  BlocListener<HomeBloc, HomeState>(
+        listener: (ctx, state) {
+      if (state is CheckUserSuccess) {
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text('审核成功'),
+          backgroundColor: Colors.green,
+        ));
+
+      }
+      if (state is DelImgSuccess) {
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text('审核成功'),
+          backgroundColor: Colors.blue,
+        ));
+
+      }
+    },
+    child:BlocBuilder<HomeBloc, HomeState>(builder: (ctx, state) {
       return Stack(
         children: <Widget>[
           BlocBuilder<GlobalBloc, GlobalState>(builder: _buildBackground),
           CustomScrollView(
             slivers: <Widget>[
               _buildPersistentHeader(),
-              _buildContent(ctx, state),
+           _buildContent(ctx, state),
             ],
           ),
         ],
       );
-    }));
+    }
+    )
+        )
+    );
   }
 
   Widget _buildPersistentHeader() => SliverPersistentHeader(
@@ -79,12 +99,6 @@ class _HomePageState extends State<HomePage>
 
   Widget _buildContent(BuildContext context, HomeState state) {
     if (state is WidgetsLoading) {
-      // return SliverToBoxAdapter(
-      //   child: Center(
-      //     child: PlateLoading(),
-      //   ),
-      // );
-      //
       return SliverToBoxAdapter(
         child: Container(),
       );
@@ -108,7 +122,29 @@ class _HomePageState extends State<HomePage>
         ),
       );
     }
-    return Container();
+    if (state is CheckUserSuccess) {
+      List<WidgetModel> items = state.widgets;
+      List<dynamic>  photos=state.photos;
+      if (items.isEmpty) return EmptyPage();
+      return SliverList(
+        delegate: SliverChildBuilderDelegate(
+                (_, int index) => _buildHomeItem(items[index],photos[index]),
+            childCount: photos.length),
+      );
+    }
+    if (state is DelImgSuccess) {
+      List<WidgetModel> items = state.widgets;
+      List<dynamic>  photos=state.photos;
+      if (items.isEmpty) return EmptyPage();
+      return SliverList(
+        delegate: SliverChildBuilderDelegate(
+                (_, int index) => _buildHomeItem(items[index],photos[index]),
+            childCount: photos.length),
+      );
+    }
+    return SliverToBoxAdapter(
+      child: Container(),
+    );
   }
 
   Widget _buildHomeItem(WidgetModel model,Map<String,dynamic> photo) =>

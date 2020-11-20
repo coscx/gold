@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/22
+/// create by GUGU Team on 2020/7/22
 /// contact me by email 1981462002@qq.com
 /// 说明: 279 PhysicalShape 物理形状 可以让子组件按照路径进行剪裁,并且可以指定背景色、影深、阴影颜色、剪切行为。
 //    {

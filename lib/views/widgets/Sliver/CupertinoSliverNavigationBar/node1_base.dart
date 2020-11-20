@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/9/21
+/// create by GUGU Team on 2020/9/21
 /// contact me by email 1981462002@qq.com
 /// 说明: 302 CupertinoSliverNavigationBar Sliver导航条 iOS11中导航条效果，展开时largeTitle显示,列表上滑后不显示，如果middle为空，largeTitle会以小字号作为middle。
 //    {
@@ -44,7 +44,7 @@ class CupertinoSliverNavigationBarDemo extends StatelessWidget {
             ),
             leading: _buildLeading(),
             backgroundColor: Colors.white,
-            // middle: Text('张风捷特烈'),
+            // middle: Text('GUGU Team'),
             largeTitle: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -54,7 +54,7 @@ class CupertinoSliverNavigationBarDemo extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Text('张风捷特烈'),
+                  child: Text('GUGU Team'),
                 ),
                 Icon(Icons.ac_unit, size: 20),
               ],

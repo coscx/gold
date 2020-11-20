@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-03-26
+/// create by GUGU Team on 2020-03-26
 /// contact me by email 1981462002@qq.com
 /// 说明:
 
@@ -33,7 +33,7 @@ class _SelectRawChipState extends State<SelectRawChip> {
         labelPadding: EdgeInsets.all(3),
         deleteIconColor: Colors.red,
         selectedColor: Colors.orangeAccent.withAlpha(44),
-        label: Text('张风捷特烈'),
+        label: Text('GUGU Team'),
         avatar: Image.asset("assets/images/icon_head.webp"),
         elevation: 3,
         pressElevation: 5,

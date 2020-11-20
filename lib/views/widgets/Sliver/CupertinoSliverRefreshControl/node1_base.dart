@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/9/21
+/// create by GUGU Team on 2020/9/21
 /// contact me by email 1981462002@qq.com
 /// 说明: 303 CupertinoSliverRefreshControl Sliver刷新控制器 iOS风格的下拉刷新控制器，可执行异步刷新方法、自定义控制器组件、指示器停留高度和触发加载的滑动高度。
 //    {
@@ -85,7 +85,7 @@ class _CupertinoSliverRefreshControlDemoState
       leading: Container(
           margin: EdgeInsets.all(10),
           child: Image.asset('assets/images/icon_head.webp')),
-      title: Text('张风捷特烈'),
+      title: Text('GUGU Team'),
       actions: _buildActions(),
       elevation: 5,
       pinned: true,

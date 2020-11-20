@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-03-31
+/// create by GUGU Team on 2020-03-31
 /// contact me by email 1981462002@qq.com
 /// 说明: 
 //    {
@@ -97,7 +97,7 @@ class SliverPersistentHeaderDemo extends StatelessWidget {
     return SliverAppBar(
       expandedHeight: 190.0,
       leading: _buildLeading(),
-      title: Text('张风捷特烈'),
+      title: Text('GUGU Team'),
       actions: _buildActions(),
       elevation: 2,
       pinned: true,

@@ -100,7 +100,7 @@ class LayoutUnitPage extends StatelessWidget {
       bottom: 30,
       right: 30,
       child:
-      Text("Power By 张风捷特烈",
+      Text("Power By GUGU Team",
           style: TextStyle(
               color: Colors.grey,
               shadows: [

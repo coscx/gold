@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/22
+/// create by GUGU Team on 2020/7/22
 /// contact me by email 1981462002@qq.com
 /// 说明: 332 ToggleButtonsTheme 主要用于为后代的ToggleButtons组件统一设置默认属性,也可以通过该组件获取默认ToggleButtons的属性。
 //    {

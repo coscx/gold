@@ -33,11 +33,11 @@ class HomeDrawer extends StatelessWidget {
             _buildItem(context, TolyIcon.icon_them, '应用设置', UnitRouter.setting),
             _buildItem(context, TolyIcon.icon_layout, '数据统计', null),
             Divider(height: 1),
-            _buildFlutterUnit(context),
+
             _buildItem(context, TolyIcon.icon_code, 'Dart 手册', null),
             Divider(height: 1),
             _buildItem(context, Icons.info, '关于应用', UnitRouter.about_app),
-            _buildItem(context, TolyIcon.icon_kafei, '联系本王', UnitRouter.about_me),
+            _buildItem(context, TolyIcon.icon_kafei, '联系我们', UnitRouter.about_me),
           ],
         ),
       );
@@ -49,7 +49,7 @@ class HomeDrawer extends StatelessWidget {
           Icons.extension,
           color: Theme.of(context).primaryColor,
         ),
-        title: Text('Flutter 集录'),
+        title: Text('Flutter'),
         children: <Widget>[
           _buildItem(context, TolyIcon.icon_tag, '属性集录', UnitRouter.attr),
           _buildItem(context, Icons.palette, '绘画集录', UnitRouter.galley),

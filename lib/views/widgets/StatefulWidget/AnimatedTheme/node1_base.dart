@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-03-23
+/// create by GUGU Team on 2020-03-23
 /// contact me by email 1981462002@qq.com
 /// 说明: 224 主题变化时具有动画效果的组件，本质是Theme组件和动画结合的产物。可指定ThemeData、动画时长、曲线、结束回调等。相当于增强版的Theme组件。
 //    {

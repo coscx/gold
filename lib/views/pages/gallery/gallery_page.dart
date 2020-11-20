@@ -39,13 +39,13 @@ class _GalleryPageState extends State<GalleryPage> {
               children: [
                 FrameShower(
                     title: "The Chaos",
-                    author: "张风捷特烈",
+                    author: "GUGU Team",
                     info:
                         "    本样例介绍如何进行图片的绘制。通过加载图片并将图片资源绘制到指定的区域。在上层绘制一批45°倾角的栅格线,可以练习基本的绘制。",
                     content: DrawPicture()),
                 FrameShower(
                     title: "Random Portrait",
-                    author: "张风捷特烈",
+                    author: "GUGU Team",
                     info:
                         "    本样例介绍绘制矩形及随机数处理。通过点位集合确定矩形位置信息，将其绘制出来。其中对点的随机生成和对称处理能让你练习对数据的控制力。",
                     content: RandomPortrait()),

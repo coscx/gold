@@ -1,4 +1,4 @@
-/// create by 张风捷特烈 on 2020/4/25
+/// create by GUGU Team on 2020/4/25
 /// contact me by email 1981462002@qq.com
 /// 说明:
 
@@ -46,7 +46,7 @@ class CustomAboutDialog extends StatelessWidget {
       applicationIcon: FlutterLogo(),
       applicationVersion: 'v0.0.1',
       applicationName: 'Flutter Unit',
-      applicationLegalese: 'Copyright© 2018-2020 张风捷特烈',
+      applicationLegalese: 'Copyright© 2018-2020 GUGU Team',
       children: <Widget>[
         Container(
             margin: EdgeInsets.only(top: 20),

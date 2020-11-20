@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/22
+/// create by GUGU Team on 2020/7/22
 /// contact me by email 1981462002@qq.com
 /// 说明: 256 CupertinoSlidingSegmentedControl iOS滑动页签 iOS风格的滑动页签，支持点击、滑动切换。可指定页签颜色、背景色、边距等属性。
 //    {

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-03-23
+/// create by GUGU Team on 2020-03-23
 /// contact me by email 1981462002@qq.com
 /// 说明: 319 Directionality  定向性 为后代改变有textDirection属性的组件统一设置属性值,也可以通过Directionality.of(context)获取当前textDirection默认属性。
 //    {

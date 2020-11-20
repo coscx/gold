@@ -81,7 +81,7 @@ class AboutMePage extends StatelessWidget {
           Spacer(),
           FeedbackWidget(
             onPressed: () =>
-                _launchURL("mailto:1981462002@qq.com?subject=来自Flutter Unit"),
+                _launchURL("https://github.com/coscx/gold"),
             child: Icon(
               TolyIcon.icon_email,
               size: 20,
@@ -109,12 +109,12 @@ class AboutMePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          '张风捷特烈',
+          'GUGU Team',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 20),
         Text(
-          'The King Of Coder. 「编程之王」',
+          'The King Of Coder. ',
           style: TextStyle(fontSize: 16),
         ),
         SizedBox(height: 10),
@@ -127,7 +127,6 @@ class AboutMePage extends StatelessWidget {
         ),
 
         Text(
-          '微信群: 编程技术交流圣地-【Flutter群】\n'
               '愿青梅煮酒，与君天涯共话。',
           style: TextStyle(color: Colors.grey),
         ),
@@ -139,26 +138,12 @@ class AboutMePage extends StatelessWidget {
               width: 190,
               child: Column(
                 children: <Widget>[
-                  Image.asset('assets/images/wechat.webp'),
-                  Text(
-                    '我的微信',
-                    style: TextStyle(fontSize: 16),
-                  ),
+
+
                 ],
               ),
             ),
-//                Container(
-//                  width: 160,
-//                  child: Column(
-//                    children: <Widget>[
-//                      Image.asset('assets/images/wei_x.jpg'),
-//                      Text(
-//                        '请我喝茶(慎扫)',
-//                        style: TextStyle(fontSize: 16),
-//                      ),
-//                    ],
-//                  ),
-//                ),
+
           ],
         ),
       ],
@@ -169,24 +154,10 @@ class AboutMePage extends StatelessWidget {
     return Wrap(
       spacing: 20,
       children: <Widget>[
+
         FeedbackWidget(
             onPressed: () =>
-                _launchURL("https://juejin.im/user/5b42c0656fb9a04fe727eb37"),
-            child: Wrap(
-              direction: Axis.vertical,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: <Widget>[
-                Icon(
-                  TolyIcon.icon_juejin,
-                  size: 35,
-                  color: Colors.blue,
-                ),
-                Text('掘金')
-              ],
-            )),
-        FeedbackWidget(
-            onPressed: () =>
-                _launchURL("https://github.com/toly1994328"),
+                _launchURL("https://github.com/coscx/gold"),
             child: Wrap(
               direction: Axis.vertical,
               crossAxisAlignment: WrapCrossAlignment.center,

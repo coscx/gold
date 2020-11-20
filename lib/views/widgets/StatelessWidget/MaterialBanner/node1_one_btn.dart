@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/21
+/// create by GUGU Team on 2020/7/21
 /// contact me by email 1981462002@qq.com
 /// 说明: 211 MaterialBanner Material风格的横幅组件，支持左中右或左中下结构，可指定边距背景色等。
 

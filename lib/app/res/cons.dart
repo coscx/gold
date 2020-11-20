@@ -3,7 +3,7 @@ import 'package:flutter_unit/app/res/toly_icon.dart';
 import 'package:flutter_unit/components/permanent/code/highlighter_style.dart';
 
 class Cons {
-  static String version = 'V1.1.1';
+  static String version = 'V0.0.1';
 
   static const MENU_INFO = <String>["关于", "帮助", "问题反馈"]; //菜单栏
   static const ICONS_MAP = {
@@ -43,10 +43,10 @@ class Cons {
   ];
 
   static Map<HighlighterStyle, String> codeThemeSupport = <HighlighterStyle, String>{
-    HighlighterStyle.fromColors(HighlighterStyle.gitHub):"GitHub - Power By 张风捷特烈",
-    HighlighterStyle.fromColors(HighlighterStyle.darkColor):"捷特黑 - Power By 张风捷特烈",
-    HighlighterStyle.fromColors(HighlighterStyle.lightColor):"捷特白 - Power By 张风捷特烈",
-    HighlighterStyle.fromColors(HighlighterStyle.zenburn):"zenburn - Power By 张风捷特烈",
+    HighlighterStyle.fromColors(HighlighterStyle.gitHub):"GitHub - Power By GUGU Team",
+    HighlighterStyle.fromColors(HighlighterStyle.darkColor):"捷特黑 - Power By GUGU Team",
+    HighlighterStyle.fromColors(HighlighterStyle.lightColor):"捷特白 - Power By GUGU Team",
+    HighlighterStyle.fromColors(HighlighterStyle.zenburn):"zenburn - Power By GUGU Team",
     HighlighterStyle.fromColors(HighlighterStyle.mf):"mf - Power By MF",
     HighlighterStyle.fromColors(HighlighterStyle.solarized):"cst - Power By cst",
   };

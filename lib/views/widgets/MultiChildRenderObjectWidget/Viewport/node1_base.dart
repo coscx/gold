@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-/// create by 张风捷特烈 on 2020/8/2
+/// create by GUGU Team on 2020/8/2
 /// contact me by email 1981462002@qq.com
 /// 说明: 340 Viewport 视口组件 通常用于为滑动视图提供视口,仅构建显示和预加载的部位。可指定预加载的长度、滑动轴向等。是ScrollView的核心实现组件之一，一般不直接使用。
 

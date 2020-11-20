@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-04-01
+/// create by GUGU Team on 2020-04-01
 /// contact me by email 1981462002@qq.com
 /// 说明:
 //    {

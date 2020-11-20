@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/21
+/// create by GUGU Team on 2020/7/21
 /// contact me by email 1981462002@qq.com
 /// 说明: 298 IntrinsicHeight 根据子元素的固有高度调整其子元素大小的组件,可解决很多布局的疑难杂症,但相对昂贵。
 

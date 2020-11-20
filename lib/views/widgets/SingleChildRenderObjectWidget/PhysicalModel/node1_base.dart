@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020-03-23
+/// create by GUGU Team on 2020-03-23
 /// contact me by email 1981462002@qq.com
 /// 说明: 296 PhysicalModel 物理模块 可以让子组件按照圆形、方行进行剪裁,并且可以指定背景色、圆角、影深、阴影颜色、剪切行为。
 //    {

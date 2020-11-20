@@ -50,7 +50,7 @@ class DialogAbout extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                "Power By GF·J·Toly\n张风捷特烈",
+                "Power By GF·J·Toly\nGUGU Team",
                 textAlign: TextAlign.center,
               ),
             ],

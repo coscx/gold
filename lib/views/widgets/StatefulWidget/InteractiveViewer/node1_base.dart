@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/7/22
+/// create by GUGU Team on 2020/7/22
 /// contact me by email 1981462002@qq.com
 /// 说明: 351 InteractiveViewer 交互视图 主要对移动、缩放等手势交互进行封装，简化使用，可指定移动边界、缩放比例、手势监听等。
 //    {

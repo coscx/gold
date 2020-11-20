@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'matrix4_shower.dart';
 
-/// create by 张风捷特烈 on 2020/4/30
+/// create by GUGU Team on 2020/4/30
 /// contact me by email 1981462002@qq.com
 /// 说明: 
 

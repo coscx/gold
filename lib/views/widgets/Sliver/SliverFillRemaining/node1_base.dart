@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// create by 张风捷特烈 on 2020/9/21
+/// create by GUGU Team on 2020/9/21
 /// contact me by email 1981462002@qq.com
 /// 说明: 306 SliverFillRemaining Sliver填补剩余 一个包含单个box子元素的sliver，它填充了视窗中的剩余空间。
 //    {
@@ -124,7 +124,7 @@ class _SliverFillRemainingDemoState extends State<SliverFillRemainingDemo> {
       leading: Container(
           margin: EdgeInsets.all(10),
           child: Image.asset('assets/images/icon_head.webp')),
-      title: Text('张风捷特烈'),
+      title: Text('GUGU Team'),
       actions: _buildActions(),
       elevation: 5,
       pinned: true,

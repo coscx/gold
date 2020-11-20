@@ -1,4 +1,4 @@
-/// create by 张风捷特烈 on 2020-03-25
+/// create by GUGU Team on 2020-03-25
 /// contact me by email 1981462002@qq.com
 /// 说明:
 //    {
@@ -26,7 +26,7 @@ class CustomCupertinoActionSheetAction extends StatelessWidget {
           child: CupertinoActionSheetAction(
               isDefaultAction: true,
               onPressed: () => DialogAbout.show(context),
-              child: Text('张风捷特烈')),
+              child: Text('GUGU Team')),
         ),
         Container(
           color: Colors.grey.withAlpha(33),

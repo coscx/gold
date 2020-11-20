@@ -1,4 +1,4 @@
-/// create by 张风捷特烈 on 2020/4/25
+/// create by GUGU Team on 2020/4/25
 /// contact me by email 1981462002@qq.com
 /// 说明:
 
@@ -30,7 +30,7 @@ class _DenseCheckBoxListTileState extends State<DenseCheckBoxListTile> {
         checkColor: Colors.yellow,
         activeColor: Colors.orangeAccent,
         secondary: Image.asset("assets/images/icon_head.webp"),
-        title: Text("张风捷特烈"),
+        title: Text("GUGU Team"),
         subtitle: Text("@万花过尽知无物"),
         onChanged: (v) => setState(() => _selected = !_selected),
       ),
