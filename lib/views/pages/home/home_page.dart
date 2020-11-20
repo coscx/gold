@@ -92,10 +92,11 @@ class _HomePageState extends State<HomePage>
 
     if (state is WidgetsLoaded) {
       List<WidgetModel> items = state.widgets;
+      List<dynamic>  photos=state.photos;
       if (items.isEmpty) return EmptyPage();
       return SliverList(
         delegate: SliverChildBuilderDelegate(
-            (_, int index) => _buildHomeItem(items[index]),
+            (_, int index) => _buildHomeItem(items[index],photos[index]),
             childCount: items.length),
       );
     }
@@ -110,14 +111,11 @@ class _HomePageState extends State<HomePage>
     return Container();
   }
 
-  Widget _buildHomeItem(WidgetModel model) =>
+  Widget _buildHomeItem(WidgetModel model,Map<String,dynamic> photo) =>
       BlocBuilder<GlobalBloc, GlobalState>(
         condition: (p, c) => (p.itemStyleIndex != c.itemStyleIndex),
         builder: (_, state) {
-          return FeedbackWidget(
-              duration: const Duration(milliseconds: 200),
-              onPressed: () => _toDetailPage(model),
-              child: HomeItemSupport.get(model, state.itemStyleIndex));
+          return HomeItemSupport.get(model, 6 ,photo);
         },
       );
 
@@ -126,8 +124,8 @@ class _HomePageState extends State<HomePage>
         .add(EventTabTap(Convert.toFamily(index)));
   }
 
-  _toDetailPage(WidgetModel model) {
-    BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(model));
+  _toDetailPage(WidgetModel model,Map<String,dynamic> photo) {
+    BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(model,photo));
     Navigator.pushNamed(context, UnitRouter.widget_detail, arguments: model);
   }
 

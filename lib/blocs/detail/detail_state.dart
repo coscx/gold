@@ -18,8 +18,8 @@ class DetailWithData extends DetailState {
   final WidgetModel widgetModel;
   final List<WidgetModel> links;
   final List<NodeModel> nodes;
-
-  const DetailWithData({this.widgetModel, this.nodes,this.links});
+  final Map<String,dynamic>  userdetails ;
+  const DetailWithData({this.widgetModel, this.nodes,this.links,this.userdetails});
 
   @override
   List<Object> get props => [widgetModel,nodes];

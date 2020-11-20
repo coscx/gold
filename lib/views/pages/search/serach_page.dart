@@ -122,7 +122,8 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   _toDetailPage(WidgetModel model) {
-    BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(model));
+    Map<String,dynamic> photo;
+    BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(model,photo));
     Navigator.pushNamed(context, UnitRouter.widget_detail,arguments: model);
   }
 }

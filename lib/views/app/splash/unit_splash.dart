@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_unit/app/router.dart';
+import 'package:flutter_unit/storage/dao/local_storage.dart';
 import 'unit_paint.dart';
 
 /// 说明: app 闪屏页
@@ -48,8 +49,16 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
     if (status == AnimationStatus.completed) {
       setState(() {
         _animEnd = true;
-        Future.delayed(Duration(milliseconds: 500)).then((e) {
-          Navigator.of(context).pushReplacementNamed(UnitRouter.nav);
+        Future.delayed(Duration(milliseconds: 500)).then((e) async {
+          var ss = await LocalStorage.get("token");
+          var sss =ss.toString();
+          if(sss==""){
+            Navigator.of(context).pushReplacementNamed(UnitRouter.login);
+          } else{
+            //LocalStorage.save("token", '');
+            Navigator.of(context).pushReplacementNamed(UnitRouter.nav);
+          }
+
         });
       });
     }

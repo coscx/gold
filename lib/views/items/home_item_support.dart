@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_unit/app/enums.dart';
 import 'package:flutter_unit/model/widget_model.dart';
+import 'package:flutter_unit/views/items/photo_widget_list_item.dart';
 
 import 'coupon_widget_list_item.dart';
 import 'techno_widget_list_item.dart';
@@ -13,6 +14,8 @@ class HomeItemSupport {
   static Widget get(
     WidgetModel model,
     int index,
+    Map<String,dynamic>  photo,
+
   ) {
     switch (index) {
       case 0:
@@ -28,6 +31,8 @@ class HomeItemSupport {
             hasTopHole: true, hasBottomHole: true, data: model);
       case 5:
         return CouponWidgetListItem(isClip: false, data: model);
+      case 6:
+        return PhotoWidgetListItem(isClip: false, data: model,photo: photo,);
     }
     return TechnoWidgetListItem(data: model);
   }

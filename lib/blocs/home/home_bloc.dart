@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_unit/app/api/issues_api.dart';
 import 'package:flutter_unit/app/enums.dart';
 import 'package:flutter_unit/app/res/cons.dart';
 import 'package:flutter_unit/repositories/itf/widget_repository.dart';
@@ -31,15 +32,27 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   @override
   Stream<HomeState> mapEventToState(HomeEvent event) async* {
     if (event is EventTabTap) {
+
+
+
       yield* _mapLoadWidgetToState(event.family);
     }
+
+
   }
 
   Stream<HomeState> _mapLoadWidgetToState(WidgetFamily family) async* {
     yield WidgetsLoading();
     try {
-      final widgets = await this.repository.loadWidgets(family);
-      yield WidgetsLoaded(widgets: widgets, activeFamily: family);
+
+      var result= await IssuesApi.getPhoto('', '1');
+      if  (result['code']==200){
+
+
+      } else{
+
+      }
+      yield WidgetsLoaded(photos: result['data']['photo_list']);
     } catch (err) {
       print(err);
       yield WidgetsLoadFailed();

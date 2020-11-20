@@ -13,8 +13,8 @@ abstract class DetailEvent extends Equatable {
 
 class FetchWidgetDetail extends DetailEvent {
   final WidgetModel widgetModel;
-
-  const FetchWidgetDetail(this.widgetModel);
+  final Map<String,dynamic> photo;
+  const FetchWidgetDetail(this.widgetModel,this.photo);
 
   @override
   List<Object> get props => [widgetModel];

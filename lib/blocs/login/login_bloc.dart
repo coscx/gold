@@ -7,6 +7,7 @@ import 'package:flutter_unit/app/api/issues_api.dart';
 import 'package:flutter_unit/app/enums.dart';
 import 'package:flutter_unit/app/res/cons.dart';
 import 'package:flutter_unit/repositories/itf/widget_repository.dart';
+import 'package:flutter_unit/storage/dao/local_storage.dart';
 
 import 'login_event.dart';
 import 'login_state.dart';
@@ -31,6 +32,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginLoading();
      var result= await IssuesApi.login(event.username, event.password);
      if  (result['code']==200){
+
+       LocalStorage.save("token", result['msg']['token']);
+
+
        yield LoginSuccess();
      } else{
        yield LoginFailed(reason: result['msg']);

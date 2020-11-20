@@ -22,12 +22,12 @@ class WidgetsLoading extends HomeState {
 class WidgetsLoaded extends HomeState {
   final List<WidgetModel> widgets;
   final WidgetFamily activeFamily;
-
+  final List<dynamic>  photos ;
   const WidgetsLoaded(
-      {this.activeFamily, this.widgets = const []});
+      {this.activeFamily, this.widgets = const [],this.photos});
 
   @override
-  List<Object> get props => [activeFamily, widgets];
+  List<Object> get props => [activeFamily, widgets,photos];
 
   @override
   String toString() {

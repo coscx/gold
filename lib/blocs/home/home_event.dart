@@ -20,3 +20,9 @@ class EventTabTap extends HomeEvent {
 }
 
 
+class EventTabPhoto extends HomeEvent {
+  final Map<String,dynamic> family;
+
+  EventTabPhoto(this.family);
+
+}

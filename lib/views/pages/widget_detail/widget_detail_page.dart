@@ -52,9 +52,8 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            WidgetDetailTitle(
-              model: _modelStack.last,
-            ),
+            BlocBuilder<DetailBloc, DetailState>(builder: _buildTitle),
+
             BlocBuilder<DetailBloc, DetailState>(builder: _buildDetail)
           ],
         ),
@@ -134,7 +133,8 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
     _modelStack.removeLast();
     if (_modelStack.length > 0) {
       setState(() {
-        BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(_modelStack.last));
+        Map<String,dynamic> photo;
+        BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(_modelStack.last,photo));
       });
       return false;
     } else {
@@ -165,7 +165,7 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
           ),
           _buildLinkTo(
             context,
-            state.links,
+            state.userdetails,
           ),
           Divider(),
           _buildNodes(state.nodes, state.widgetModel.name)
@@ -174,47 +174,60 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
     }
     return Container();
   }
+  Widget _buildTitle(BuildContext context, DetailState state) {
+    print('build---${state.runtimeType}---');
+    if (state is DetailWithData) {
+      return WidgetDetailTitle(
+        model: _modelStack.last,
+        usertail: state.userdetails,
 
-  _buildLinkTo(BuildContext context, List<WidgetModel> links) {
-    if (links == null || links.isEmpty) {
-      return Padding(
-          padding: EdgeInsets.only(left: 10),
-          child: Chip(
-            backgroundColor: Colors.grey.withAlpha(120),
-            labelStyle: TextStyle(fontSize: 12, color: Colors.white),
-            label: Text('暂无链接组件'),
-          ));
-    } else {
-      return Padding(
-        padding: const EdgeInsets.only(left: 10.0, top: 10),
-        child: Wrap(
-          spacing: 5,
-          children: links
-              .map((e) => ActionChip(
-                    onPressed: () {
-                      BlocProvider.of<DetailBloc>(context)
-                          .add(FetchWidgetDetail(e));
-                      setState(() {
-                        _modelStack.add(e);
-                      });
-                    },
-                    elevation: 2,
-                    shadowColor: Colors.orange,
-                    backgroundColor: Theme.of(context).primaryColor,
-                    labelStyle: TextStyle(fontSize: 12, color: Colors.white),
-                    label: Text('${e.name}'),
-                  ))
-              .toList(),
-        ),
       );
     }
+    return Container();
+  }
+  Widget _buildLinkTo(BuildContext context, Map<String,dynamic> userdetail) {
+
+    List<dynamic> imgList =userdetail['images'];
+    List<Widget> list = [];
+    imgList.map((e) => {
+
+      list.add( Column(
+      children:<Widget> [
+        Container(
+          margin: EdgeInsets.all(10),
+          width: 110,
+          height: 200,
+          child: Image(
+            image: FadeInImage.assetNetwork(
+              placeholder:'assets/images/icon_head.webp',
+              image:e['imagepath'],
+            ).image,
+          ),
+
+        )
+
+      ],
+
+    ))
+
+    }
+
+
+    ).toList();
+
+
+    return Wrap(
+      children: [
+        ...list
+      ],
+    );
   }
 }
 
 class WidgetDetailTitle extends StatelessWidget {
   final WidgetModel model;
-
-  WidgetDetailTitle({this.model});
+  final Map<String,dynamic> usertail;
+  WidgetDetailTitle({this.model,this.usertail});
 
   @override
   Widget build(BuildContext context) {
@@ -224,8 +237,8 @@ class WidgetDetailTitle extends StatelessWidget {
       children: <Widget>[
         Row(
           children: <Widget>[
-            _buildLeft(model),
-            _buildRight(model),
+            _buildLeft(model,usertail),
+            _buildRight(model,usertail),
           ],
         ),
         Divider(),
@@ -235,14 +248,14 @@ class WidgetDetailTitle extends StatelessWidget {
 
   final List<int> colors = Cons.tabColors;
 
-  Widget _buildLeft(WidgetModel model) => Expanded(
+  Widget _buildLeft(WidgetModel model,Map<String,dynamic> usertail) => Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 20.0, left: 20),
               child: Text(
-                model.nameCN,
+                "用户名："  + usertail['user']['userName'],
                 style: TextStyle(
                     fontSize: 20,
                     color: Color(0xff1EBBFD),
@@ -251,13 +264,19 @@ class WidgetDetailTitle extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Panel(child: Text(model.info)),
+              child: Panel(child: Text(
+                   "性别："  + (usertail['user']['sex'].toString()=="1"?"男":"女")+
+
+                   " 年龄："  + usertail['user']['age'].toString()+
+                   " 手机号："  + usertail['user']['tel'].toString()+
+                   " 颜值："  + usertail['user']['facescore'].toString()
+              )),
             )
           ],
         ),
       );
 
-  Widget _buildRight(WidgetModel model) => Column(
+  Widget _buildRight(WidgetModel model,Map<String,dynamic> usertail) => Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
@@ -265,12 +284,15 @@ class WidgetDetailTitle extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Hero(
-                  tag: "hero_widget_image_${model.id}",
+                  tag: "hero_widget_image_${usertail['user']['memberId'].toString()}",
                   child: ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
                       child: model.image == null
                           ? Image.asset('assets/images/caver.webp')
-                          : Image(image: model.image))),
+                          : Image(image: FadeInImage.assetNetwork(
+                        placeholder:'assets/images/icon_head.webp',
+                        image:usertail['user']['img'],
+                      ).image))),
             ),
           ),
           StarScore(

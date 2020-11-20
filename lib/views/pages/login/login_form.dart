@@ -38,7 +38,7 @@ class _LoginFromState extends State<LoginFrom> {
                    BlocProvider.of<LoginBloc>(context).add(
                      EventLoginFailed(),
                    );
-                Navigator.of(context).pushReplacementNamed(UnitRouter.about_me);
+                Navigator.of(context).pushReplacementNamed(UnitRouter.nav);
             }
         },
         child: BlocBuilder<LoginBloc, LoginState>(

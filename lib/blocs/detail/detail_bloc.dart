@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_unit/app/api/issues_api.dart';
 import 'package:flutter_unit/model/widget_model.dart';
 import 'package:flutter_unit/repositories/itf/widget_repository.dart';
 
@@ -19,7 +20,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
   @override
   Stream<DetailState> mapEventToState(DetailEvent event) async* {
     if (event is FetchWidgetDetail) {
-      yield* _mapLoadWidgetToState(event.widgetModel);
+      yield* _mapLoadWidgetToState(event.widgetModel,event.photo);
     }
     if(event is ResetDetailState){
       yield DetailLoading();
@@ -27,15 +28,21 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
   }
 
   Stream<DetailState> _mapLoadWidgetToState(
-      WidgetModel widgetModel) async* {
+      WidgetModel widgetModel, Map<String,dynamic> photo) async* {
     yield DetailLoading();
     try {
       final nodes = await this.repository.loadNode(widgetModel);
       final links = await this.repository.loadWidget(widgetModel.links);
+      var result= await IssuesApi.getUserDetail(photo['memberId'].toString());
+      if  (result['code']==200){
+
+      } else{
+
+      }
       if(nodes.isEmpty){
         yield DetailEmpty();
       }else{
-        yield DetailWithData(widgetModel: widgetModel, nodes: nodes,links: links);
+        yield DetailWithData(widgetModel: widgetModel, nodes: nodes,links: links,userdetails: result['data']);
       }
 
     } catch (_) {
