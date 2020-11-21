@@ -17,7 +17,7 @@ class FlutterUnit extends StatelessWidget {
 //            showSemanticsDebugger: true,
 //            checkerboardOffscreenLayers:true,
 //            checkerboardRasterCacheImages:true,
-            title: 'Flutter Unit',
+            title: 'GUGU管理端',
             debugShowCheckedModeBanner: false,
             onGenerateRoute: UnitRouter.generateRoute,
             theme: ThemeData(

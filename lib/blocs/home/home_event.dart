@@ -39,3 +39,16 @@ class EventDelImg extends HomeEvent {
   EventDelImg(this.user,this.status);
 
 }
+
+class EventFresh extends HomeEvent {
+
+
+}
+class EventLoadMore extends HomeEvent {
+  final List<dynamic> user01;
+  EventLoadMore(this.user01);
+}
+class EventPagePlus extends HomeEvent {
+
+
+}

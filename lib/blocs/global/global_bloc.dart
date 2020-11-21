@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_unit/app/api/issues_api.dart';
 import 'package:flutter_unit/storage/app_storage.dart';
 import 'package:flutter_unit/app/res/cons.dart';
 import 'package:flutter_unit/app/res/sp.dart';
@@ -38,7 +39,7 @@ class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
     // 切换主题色事件处理 : 固化索引 + 产出新状态
     if (event is EventSwitchThemeColor) {
       int themeIndex =
-          Cons.themeColorSupport.keys.toList().indexOf(event.color);
+      Cons.themeColorSupport.keys.toList().indexOf(event.color);
       await sp
         ..setInt(SP.themeColorIndex, themeIndex);
       yield state.copyWith(themeColor: event.color);
@@ -68,6 +69,41 @@ class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
       await sp
         ..setInt(SP.itemStyleIndex, event.index);
       yield state.copyWith(itemStyleIndex: event.index);
+    }
+
+    // 首页图片审核分页当前第几页
+    if (event is EventIndexPhotoPage) {
+      var page = event.page;
+      page++;
+      yield state.copyWith(indexPhotoPage: page);
+    }
+    // 首页图片审核分页当前第几页
+    if (event is EventResetIndexPhotoPage) {
+      yield state.copyWith(indexPhotoPage: 1);
+    }
+
+    // 首页头部数量
+    if (event is EventSetIndexNum) {
+      try {
+        var result = await IssuesApi.getPhotoNum();
+        if (result['code'] == 200) {
+
+
+        } else {
+
+        }
+        List<String> lists=[];
+        List<dynamic> list = result['data'];
+         list.map((e)  {
+           if(e is String){
+             lists.add(e.toString());
+           }
+
+         }).toList();
+        yield state.copyWith(headNum: lists);
+      } catch (err) {
+        print(err);
+      }
     }
   }
 }

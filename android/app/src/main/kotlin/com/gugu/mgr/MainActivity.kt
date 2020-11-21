@@ -1,4 +1,4 @@
-package com.toly1994.flutter_unit
+package com.gugu.mgr
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

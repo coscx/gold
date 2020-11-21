@@ -6,6 +6,7 @@ import 'package:flutter_unit/blocs/bloc_exp.dart';
 import 'package:flutter_unit/components/permanent/circle.dart';
 import 'package:flutter_unit/storage/dao/widget_dao.dart';
 import 'package:flutter_unit/model/widget_model.dart';
+import 'package:flutter_unit/views/items/photo_widget_list_item.dart';
 import 'package:flutter_unit/views/items/techno_widget_list_item.dart';
 import 'package:flutter_unit/views/pages/search/app_search_bar.dart';
 import 'package:flutter_unit/views/pages/search/error_page.dart';
@@ -69,7 +70,7 @@ class _SearchPageState extends State<SearchPage> {
                   color: Colors.orange,
                 ),
                 Text(
-                  '星级查询',
+                  '用户查询',
                   style: TextStyle(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold),
@@ -93,23 +94,27 @@ class _SearchPageState extends State<SearchPage> {
       );
 
   Widget _buildBodyByState(BuildContext context,SearchState state) {
-    if (state is SearchStateNoSearch) return SliverToBoxAdapter(child: NotSearchPage(),);
-    if (state is SearchStateLoading) return SliverToBoxAdapter(child: LoadingPage());
-    if (state is SearchStateError) return SliverToBoxAdapter(child: ErrorPage());
-    if (state is SearchStateSuccess) return _buildSliverList(state.result);
-    if (state is SearchStateEmpty) return SliverToBoxAdapter(child: EmptyPage());
+    if (state is SearchStateNoSearch)
+      return SliverToBoxAdapter(child: NotSearchPage(),);
+    if (state is SearchStateLoading)
+      return SliverToBoxAdapter(child: LoadingPage());
+    if (state is SearchStateError)
+      return SliverToBoxAdapter(child: ErrorPage());
+    if (state is SearchStateSuccess)
+      return _buildSliverList(state.result,state.photos);
+    if (state is SearchStateEmpty)
+      return SliverToBoxAdapter(child: EmptyPage());
     return NotSearchPage();
   }
 
-  Widget _buildSliverList(List<WidgetModel> models) => SliverList(
+  Widget _buildSliverList(List<WidgetModel> models , List<dynamic>  photos) => SliverList(
         delegate: SliverChildBuilderDelegate(
             (_, int index) => Container(
                 child: InkWell(
-                    onTap: () => _toDetailPage(models[index]),
-                    child: TechnoWidgetListItem(
-                      data: models[index],
-                    ))),
-            childCount: models.length),
+                    onTap: () => _toDetailPage(models[0],photos[index]),
+                    child:  PhotoWidgetListItem(isClip: false, data: models[0],photo: photos[index],)
+                )),
+            childCount: photos.length),
       );
 
   _doSelectStart(List<int> select) {
@@ -121,9 +126,9 @@ class _SearchPageState extends State<SearchPage> {
         .add(EventTextChanged(args: SearchArgs(name: '', stars: temp)));
   }
 
-  _toDetailPage(WidgetModel model) {
-    Map<String,dynamic> photo;
-    BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(model,photo));
+  _toDetailPage(WidgetModel model,Map<String,dynamic>  photos) {
+   //Map<String,dynamic> photo;
+    BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(model,photos));
     Navigator.pushNamed(context, UnitRouter.widget_detail,arguments: model);
   }
 }

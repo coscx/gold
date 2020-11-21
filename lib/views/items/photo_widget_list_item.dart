@@ -79,21 +79,19 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
 
                 Column(
                   children:<Widget> [
-                    FeedbackWidget(
-                      onPressed: () {
-                        Navigator.of(context).push(PageRouteBuilder(
-                            pageBuilder: (c, a, s) => PreviewImagesWidget([img['imagepath']],initialPage: 1,)));
+                 GestureDetector(
 
-                      },
-                      child: Container(
+                onLongPress: () => _onLongPress(context,img['imagepath']),
+                child: Container(
                       child: CachedNetworkImage(imageUrl: img['imagepath'],
                       width: 80,
                       height: 150,
                       ),
-                      ),
+                      )
 
-                    )
-                    ,
+                )
+
+
 
                   ],
 
@@ -127,7 +125,10 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
     );
 
 }
-
+  _onLongPress(BuildContext context,  String img) {
+    Navigator.of(context).push(PageRouteBuilder(
+        pageBuilder: (c, a, s) => PreviewImagesWidget([img],initialPage: 1,)));
+  }
   Widget buildMiddle (BuildContext context,){
     List<dynamic> imgList =photo['imageurl'];
     List<Widget> list = [];

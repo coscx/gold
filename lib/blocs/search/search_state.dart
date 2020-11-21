@@ -15,5 +15,6 @@ class SearchStateError extends SearchState {}//异常
 
 class SearchStateSuccess extends SearchState {//有结果
   final List<WidgetModel> result;//搜索结果
-  const SearchStateSuccess(this.result);
+  final List<dynamic>  photos ;
+  const SearchStateSuccess(this.result,this.photos);
 }

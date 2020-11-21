@@ -16,7 +16,7 @@ class NotSearchPage extends StatelessWidget {
            Container(
             padding:  EdgeInsets.only(top: 16.0),
             child:  Text(
-              "哥们，搜点啥...≧◔◡◔≦",
+              "...≧◔◡◔≦",
               style:  TextStyle(
                 fontSize: 20,
                 color: Colors.blue,

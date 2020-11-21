@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_unit/app/api/issues_api.dart';
 import 'package:flutter_unit/app/enums.dart';
 import 'package:flutter_unit/app/res/cons.dart';
+import 'package:flutter_unit/app/utils/convert.dart';
 import 'package:flutter_unit/repositories/itf/widget_repository.dart';
 import 'dart:convert';
 import 'home_event.dart';
@@ -42,15 +43,32 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         var newUsers= users.where((element) =>
         element['memberId'] != user['memberId']
         ).toList();
-
-
-        yield CheckUserSuccess(widgets: state.props.elementAt(1), activeFamily: state.props.elementAt(0),photos: newUsers);
+        String reason;
+       if(status ==1){
+         reason="，已拒绝该用户";
+       }
+        if(status ==2){
+          reason="，颜值100分";
+        }
+        if(status ==3){
+          reason="，颜值80分";
+        }
+        if(status ==4){
+          reason="，颜值60分";
+        }
+        if(status ==5){
+          reason="，已隐藏该用户";
+        }
+        yield CheckUserSuccess(widgets: state.props.elementAt(1), activeFamily: state.props.elementAt(0),photos: newUsers,Reason:reason);
       } catch (err) {
         print(err);
         yield WidgetsLoadFailed();
       }
 
     }
+
+
+
     if (event is EventDelImg) {
 
       var img=event.user;
@@ -79,6 +97,32 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       }
 
     }
+
+    if (event is EventLoadMore) {
+       var data =event.user01;
+      yield WidgetsLoaded(widgets: state.props.elementAt(1), activeFamily: state.props.elementAt(0),photos: data);
+
+    }
+    if (event is EventFresh) {
+      try {
+
+        var result= await IssuesApi.getPhoto('', '1');
+        if  (result['code']==200){
+
+
+        } else{
+
+        }
+        final widgets = await this.repository.loadWidgets(state.props.elementAt(0),);
+        yield WidgetsLoaded(widgets: widgets, activeFamily: state.props.elementAt(0),photos: result['data']['photo_list']);
+
+      } catch (err) {
+        print(err);
+        yield WidgetsLoadFailed();
+      }
+
+    }
+
   }
 
   Stream<HomeState> _mapLoadWidgetToState(WidgetFamily family) async* {

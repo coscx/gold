@@ -52,7 +52,7 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
         Future.delayed(Duration(milliseconds: 500)).then((e) async {
           var ss = await LocalStorage.get("token");
           var sss =ss.toString();
-          if(sss==""){
+          if(sss == "" || ss == null){
             Navigator.of(context).pushReplacementNamed(UnitRouter.login);
           } else{
             //LocalStorage.save("token", '');

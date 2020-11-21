@@ -15,7 +15,7 @@ class EmptyPage extends StatelessWidget {
            Container(
             padding:  EdgeInsets.only(top: 16.0),
             child:  Text(
-              "没数据，哥也没办法，(≡ _ ≡)/~┴┴",
+              "啥也没搜到，(≡ _ ≡)/~┴┴",
               style:  TextStyle(
                 fontSize: 20,
                 color: Colors.orangeAccent,

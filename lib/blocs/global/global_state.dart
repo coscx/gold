@@ -22,6 +22,12 @@ class GlobalState extends Equatable {
   /// [showPerformanceOverlay] 是否显示性能浮层
   final bool showPerformanceOverlay;
 
+  /// [indexPhotoPage] 首页照片审核图
+  final int indexPhotoPage;
+
+  /// [headNum] 首页照片审核图
+  final List<String> headNum;
+
   const GlobalState({
     this.fontFamily = 'ComicNeue',
     this.themeColor = Colors.blue,
@@ -29,6 +35,8 @@ class GlobalState extends Equatable {
     this.codeStyleIndex = 0,
     this.itemStyleIndex = 0,
     this.showPerformanceOverlay = false,
+    this.indexPhotoPage =1,
+    this.headNum,
   });
 
   @override
@@ -38,7 +46,9 @@ class GlobalState extends Equatable {
         showBackGround,
         codeStyleIndex,
         itemStyleIndex,
-        showPerformanceOverlay
+        showPerformanceOverlay,
+        indexPhotoPage,
+        headNum
       ];
 
   GlobalState copyWith({
@@ -49,6 +59,8 @@ class GlobalState extends Equatable {
     int codeStyleIndex,
     int itemStyleIndex,
     bool showPerformanceOverlay,
+    int  indexPhotoPage,
+    List<String> headNum
   }) =>
       GlobalState(
         fontFamily: fontFamily ?? this.fontFamily,
@@ -56,12 +68,13 @@ class GlobalState extends Equatable {
         showBackGround: showBackGround ?? this.showBackGround,
         codeStyleIndex: codeStyleIndex ?? this.codeStyleIndex,
         itemStyleIndex: itemStyleIndex ?? this.itemStyleIndex,
-        showPerformanceOverlay:
-            showPerformanceOverlay ?? this.showPerformanceOverlay,
+        showPerformanceOverlay: showPerformanceOverlay ?? this.showPerformanceOverlay,
+        indexPhotoPage:  indexPhotoPage ?? this.indexPhotoPage,
+          headNum:headNum??this.headNum
       );
 
   @override
   String toString() {
-    return 'GlobalState{fontFamily: $fontFamily, themeColor: $themeColor, showBackGround: $showBackGround, codeStyleIndex: $codeStyleIndex, itemStyleIndex: $itemStyleIndex, showPerformanceOverlay: $showPerformanceOverlay}';
+    return 'GlobalState{fontFamily: $fontFamily, themeColor: $themeColor, showBackGround: $showBackGround, codeStyleIndex: $codeStyleIndex, itemStyleIndex: $itemStyleIndex, showPerformanceOverlay: $showPerformanceOverlay}, indexPhotoPage: $indexPhotoPage}';
   }
 }

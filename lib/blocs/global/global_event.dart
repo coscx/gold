@@ -68,3 +68,19 @@ class EventChangeItemStyle extends GlobalEvent {
   @override
   List<Object> get props => [index];
 }
+class EventIndexPhotoPage extends GlobalEvent {
+  final int page;
+
+  const EventIndexPhotoPage(this.page);
+
+  @override
+  List<Object> get props => [page];
+}
+class EventResetIndexPhotoPage extends GlobalEvent {
+
+}
+
+class EventSetIndexNum extends GlobalEvent {
+
+}
+

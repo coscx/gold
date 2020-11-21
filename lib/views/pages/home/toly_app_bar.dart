@@ -5,13 +5,13 @@ import 'package:flutter_unit/components/permanent/circle.dart';
 class TolyAppBar extends StatefulWidget {
   final double maxHeight;
   final Function(int, Color) onItemClick;
-
+  final List<String> nums;
   @override
   _TolyAppBarState createState() => _TolyAppBarState();
 
   final int defaultIndex;
 
-  TolyAppBar({this.maxHeight, this.onItemClick, this.defaultIndex = 0});
+  TolyAppBar({this.maxHeight, this.onItemClick, this.defaultIndex = 0,this.nums});
 }
 
 const _kBorderRadius = BorderRadius.only(
@@ -38,14 +38,14 @@ class _TolyAppBarState extends State<TolyAppBar>
     0xFFDBD83F
   ];
 
-  static const List<String> info = [
-    '照片审核',
-    '用户投诉',
-    '用户反馈',
-    '朋友圈投诉',
-    '实名认证',
-    '广场',
-    '用户'
+  static  List<String> info = [
+    '225',
+    '32',
+    '40',
+    '52',
+    '300',
+    '20',
+    '10'
   ];
 
 
@@ -58,6 +58,7 @@ class _TolyAppBarState extends State<TolyAppBar>
       ..addListener(_render)
       ..addStatusListener(_listenStatus);
     _selectIndex = widget.defaultIndex;
+    info=widget.nums?? info;
     super.initState();
   }
 
@@ -108,9 +109,21 @@ class _TolyAppBarState extends State<TolyAppBar>
     ], color: Color(color), borderRadius: _kBorderRadius),
     height: widget.maxHeight + 20,
     width: _width,
-    child: Text(
-      info[colors.indexOf(color)],
-      style: _kTabTextStyle,
+    child: Column(
+      children: <Widget>[
+        SizedBox(
+          height: widget.maxHeight-37,
+        ),
+        Icon(
+          Icons.star,
+          color: true ? Colors.blue : Colors.grey,
+          size: 30,
+        ),
+        Text(
+            (widget.nums?? info)[colors.indexOf(color)],
+          style: _kTabTextStyle,
+        ),
+      ],
     ),
   );
 

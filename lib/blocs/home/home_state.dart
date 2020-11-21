@@ -23,6 +23,7 @@ class WidgetsLoaded extends HomeState {
   final List<WidgetModel> widgets;
   final WidgetFamily activeFamily;
   final List<dynamic>  photos ;
+
   const WidgetsLoaded(
       {this.activeFamily, this.widgets = const [],this.photos});
 
@@ -34,7 +35,22 @@ class WidgetsLoaded extends HomeState {
     return 'WidgetsLoaded{widgets: $widgets}';
   }
 }
+class WidgetsLoadmore extends HomeState {
+  final List<WidgetModel> widgets;
+  final WidgetFamily activeFamily;
+  final List<dynamic>  photos ;
 
+  const WidgetsLoadmore(
+      {this.activeFamily, this.widgets = const [],this.photos});
+
+  @override
+  List<Object> get props => [activeFamily, widgets,photos];
+
+  @override
+  String toString() {
+    return 'WidgetsLoaded{widgets: $widgets}';
+  }
+}
 class WidgetsLoadFailed extends HomeState {
   const WidgetsLoadFailed();
 
@@ -47,8 +63,9 @@ class CheckUserSuccess extends HomeState {
   final List<WidgetModel> widgets;
   final WidgetFamily activeFamily;
   final List<dynamic>  photos ;
+  final String Reason;
   const CheckUserSuccess(
-      {this.activeFamily, this.widgets = const [],this.photos});
+      {this.activeFamily, this.widgets = const [],this.photos,this.Reason});
 
   @override
   List<Object> get props => [activeFamily, widgets,photos];
@@ -63,8 +80,10 @@ class DelImgSuccess extends HomeState {
   final List<WidgetModel> widgets;
   final WidgetFamily activeFamily;
   final List<dynamic>  photos ;
+  final int photoCurrentPage ;
+
   const DelImgSuccess(
-      {this.activeFamily, this.widgets = const [],this.photos});
+      {this.activeFamily, this.widgets = const [],this.photos,this.photoCurrentPage});
 
   @override
   List<Object> get props => [activeFamily, widgets,photos];

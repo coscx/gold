@@ -14,7 +14,7 @@ class LoginFrom extends StatefulWidget {
 }
 
 class _LoginFromState extends State<LoginFrom> {
-  final _usernameController = TextEditingController(text: 'toly1994328');
+  final _usernameController = TextEditingController(text: '');
   final _passwordController = TextEditingController(text: '');
 
   bool _showPwd = false;
@@ -241,13 +241,13 @@ class _LoginFromState extends State<LoginFrom> {
               Expanded(child: Divider(height: 20,)),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('第三方登录',style: TextStyle(color: Colors.grey),),
+                child: Text('',style: TextStyle(color: Colors.grey),),
               ),
               Expanded(child: Divider(height: 20,)),
             ],
           ),
         ),
-        Icon(TolyIcon.icon_github,color: Colors.black, size: 30,)
+        Icon(TolyIcon.icon_kafei,color: Colors.black, size: 30,)
       ],
     );
   }

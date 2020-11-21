@@ -70,7 +70,7 @@ class LoginPage extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
               color: Colors.blue.withAlpha(88), shape: BoxShape.circle),
-          child: Icon(TolyIcon.icon_github,size: 100,)
+          child: Icon(TolyIcon.icon_bug,size: 100,color: Colors.pink,)
         ),
       ),
     );
