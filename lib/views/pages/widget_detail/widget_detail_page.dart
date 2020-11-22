@@ -36,7 +36,7 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
     return Scaffold(
       endDrawer: CategoryEndDrawer(widget: _modelStack.last),
       appBar: AppBar(
-        title: Text(_modelStack.last.name),
+        title: Text("用户详情"),
         actions: <Widget>[
           _buildToHome(),
           _buildCollectButton(_modelStack.last, context),
@@ -72,10 +72,9 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
     //监听 CollectBloc 伺机弹出toast
     return BlocListener<CollectBloc, CollectState>(
         listener: (ctx, st) {
-          bool collected = st.widgets.contains(model);
-          String msg =
-              collected ? "收藏【${model.name}】组件成功!" : "已取消【${model.name}】组件收藏!";
-          _showToast(ctx, msg, collected);
+         // bool collected = st.widgets.contains(model);
+         // String msg = collected ? "收藏【${model.name}】组件成功!" : "已取消【${model.name}】组件收藏!";
+         // _showToast(ctx, msg, collected);
         },
         child: FeedbackWidget(
           onPressed: () => BlocProvider.of<CollectBloc>(context)
@@ -153,12 +152,12 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
               const Padding(
                 padding: EdgeInsets.only(left: 15, right: 5),
                 child: Icon(
-                  Icons.link,
+                  Icons.photo,
                   color: Colors.blue,
                 ),
               ),
               const Text(
-                '相关组件',
+                '用户图片',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
             ],
@@ -168,7 +167,73 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
             state.userdetails,
           ),
           Divider(),
-          _buildNodes(state.nodes, state.widgetModel.name)
+          //_buildNodes(state.nodes, state.widgetModel.name)
+          WidgetNodePanel(
+            codeFamily: 'Inconsolata',
+            text: "滑动次数 (39次 A:39)",
+            code: "待完善",
+            show: Container(),
+          ),
+          WidgetNodePanel(
+            codeFamily: 'Inconsolata',
+            text: "滑动过他的 (39人 A:39)",
+            code: "待完善",
+            show: Container(),
+          ),
+          WidgetNodePanel(
+            codeFamily: 'Inconsolata',
+            text: "配对人数 (39人 A:39)",
+            code: "待完善",
+            show: Container(),
+          ),
+          WidgetNodePanel(
+            codeFamily: 'Inconsolata',
+            text: "TA喜欢的 (39人 A:39)",
+            code: "待完善",
+            show: Container(),
+          ),
+          WidgetNodePanel(
+            codeFamily: 'Inconsolata',
+            text: "喜欢TA的 (39人 A:39)",
+            code: "待完善",
+            show: Container(),
+          ),
+          WidgetNodePanel(
+            codeFamily: 'Inconsolata',
+            text: "AI照片 (39张 A:39)",
+            code: "待完善",
+            show: Container(),
+          )
+          ,
+          WidgetNodePanel(
+            codeFamily: 'Inconsolata',
+            text: "被投诉记录 (39次 A:39)",
+            code: "待完善",
+            show: Container(),
+          )
+          ,
+          WidgetNodePanel(
+            codeFamily: 'Inconsolata',
+            text: "解除配对 (39次 A:39)",
+            code: "待完善",
+            show: Container(),
+          )
+          ,
+          WidgetNodePanel(
+            codeFamily: 'Inconsolata',
+            text: "TA的定位",
+            code: "待完善",
+            show: Container(),
+          )
+          ,
+          WidgetNodePanel(
+            codeFamily: 'Inconsolata',
+            text: "订单记录",
+            code: "待完善",
+            show: Container(),
+          )
+          ,
+
         ],
       );
     }
@@ -266,7 +331,6 @@ class WidgetDetailTitle extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Panel(child: Text(
                    "性别："  + (usertail['user']['sex'].toString()=="1"?"男":"女")+
-
                    " 年龄："  + usertail['user']['age'].toString()+
                    " 手机号："  + usertail['user']['tel'].toString()+
                    " 颜值："  + usertail['user']['facescore'].toString()

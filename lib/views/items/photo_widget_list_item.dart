@@ -125,6 +125,58 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
     );
 
 }
+
+  Widget buildAiFaceCard (BuildContext context,Map<String,dynamic> img){
+    return   ClipPath(
+      clipper: ShapeBorderClipper(
+          shape: CouponShapeBorder(
+              hasTopHole: false,
+              hasBottomHole: false,
+              hasLine: true,
+              edgeRadius: 5,
+              lineRate: 0.10)),
+      child: Stack(
+          children: <Widget>[
+            Container(
+              child: Stack(
+                children: <Widget>[
+
+                  Column(
+                    children:<Widget> [
+                      GestureDetector(
+
+                          onLongPress: () => _onLongPress(context,img['imagepath']),
+                          child: Container(
+                            child: CachedNetworkImage(imageUrl: img['imagepath'],
+                              width: 80,
+                              height: 150,
+                            ),
+                          )
+
+                      )
+
+
+
+                    ],
+
+                  ),
+
+                ],
+
+              ),
+              padding: const EdgeInsets.all(2),
+              decoration:const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
+            ),
+
+
+          ]
+      ),
+    );
+
+  }
   _onLongPress(BuildContext context,  String img) {
     Navigator.of(context).push(PageRouteBuilder(
         pageBuilder: (c, a, s) => PreviewImagesWidget([img],initialPage: 1,)));
@@ -142,16 +194,14 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
     ).toList();
     return          Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
       children: [
         Expanded(child:
           Wrap(
           spacing: 5, //主轴上子控件的间距
             runSpacing: 0, //交叉轴上子控件之间的间距
             children: [
-              ...list
-
-
+              ...list,
+              buildFaceCard(context,photo['faceurl'])
             ],
 
           )
@@ -162,7 +212,17 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
         ]
     );
   }
+  Widget buildFaceCard(BuildContext context,dynamic url){
 
+    if (url is Map){
+     return  buildAiFaceCard(context,url);
+    }else{
+      return Container();
+    }
+
+
+
+  }
 
   Widget buildWhereButton(BuildContext context,int checked){
 

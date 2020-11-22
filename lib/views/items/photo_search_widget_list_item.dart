@@ -473,7 +473,7 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
     return Expanded(
       child: Row(
         children: <Widget>[
-          const SizedBox(width: 10),
+          const SizedBox(width: 1),
           Expanded(
             child: Text(photo['userName']+" "+photo['tel']+" "+(photo['sex']==1?"男":"女")+" "+photo['age'].toString()+"岁 "+(photo['device']==1?"安卓 ":"苹果 "),
                 overflow: TextOverflow.ellipsis,
@@ -495,7 +495,7 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
 
   Widget _buildSummary() {
     return Padding(
-      padding: const EdgeInsets.only(left: 10, bottom: 10, top: 5),
+      padding: const EdgeInsets.only(left: 1, bottom: 1, top: 1),
       child: Container(
         child: Text(
           //尾部摘要

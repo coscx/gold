@@ -44,20 +44,20 @@ class _WidgetNodePanelState extends State<WidgetNodePanel> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.all(1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           buildNodeTitle(),
           SizedBox(
-            height: 20,
+            height: 1,
           ),
           _buildCode(context),
           Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 20),
+            padding: const EdgeInsets.only(top: 0, bottom: 0),
             child: widget.show,
           ),
-          _buildNodeInfo(),
+          //_buildNodeInfo(),
           Divider(),
         ],
       ),
@@ -79,7 +79,7 @@ class _WidgetNodePanelState extends State<WidgetNodePanel> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
           ),
-          _buildShareButton(),
+          //_buildShareButton(),
           _buildCodeButton()
         ],
       );

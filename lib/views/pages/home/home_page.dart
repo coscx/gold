@@ -17,6 +17,7 @@ import 'package:flutter_unit/model/widget_model.dart';
 import 'package:flutter_unit/views/common/empty_page.dart';
 import 'package:flutter_unit/views/items/home_item_support.dart';
 import 'package:flutter_unit/views/pages/home/toly_app_bar.dart';
+import 'package:flutter_unit/views/widgets/exp/stateless_unit.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'background.dart';
@@ -333,7 +334,10 @@ class _HomePageState extends State<HomePage>
     if (state is WidgetsLoadFailed) {
       return SliverToBoxAdapter(
         child: Container(
-          child: Text('加载数据异常'),
+          child: Text(
+
+              '加载数据异常'
+          ),
         ),
       );
     }

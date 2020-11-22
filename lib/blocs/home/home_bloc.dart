@@ -134,7 +134,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           }
 
         }).toList();
-        var result= await IssuesApi.delPhoto(img['imgId']);
+        var result= await IssuesApi.delPhoto(img['imgId'].toString());
         if  (result['code']==200){
 
 
