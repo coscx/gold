@@ -24,10 +24,10 @@ class GlobalState extends Equatable {
 
   /// [indexPhotoPage] 首页照片审核图
   final int indexPhotoPage;
-
+  final int currentPhotoMode;
   /// [headNum] 首页照片审核图
   final List<String> headNum;
-
+  final int sex;
   const GlobalState({
     this.fontFamily = 'ComicNeue',
     this.themeColor = Colors.blue,
@@ -37,6 +37,8 @@ class GlobalState extends Equatable {
     this.showPerformanceOverlay = false,
     this.indexPhotoPage =1,
     this.headNum,
+    this.sex=1,
+    this.currentPhotoMode=1
   });
 
   @override
@@ -48,7 +50,9 @@ class GlobalState extends Equatable {
         itemStyleIndex,
         showPerformanceOverlay,
         indexPhotoPage,
-        headNum
+        headNum,
+        sex,
+        currentPhotoMode
       ];
 
   GlobalState copyWith({
@@ -60,7 +64,9 @@ class GlobalState extends Equatable {
     int itemStyleIndex,
     bool showPerformanceOverlay,
     int  indexPhotoPage,
-    List<String> headNum
+    List<String> headNum,
+    int sex,
+    int currentPhotoMode
   }) =>
       GlobalState(
         fontFamily: fontFamily ?? this.fontFamily,
@@ -70,11 +76,13 @@ class GlobalState extends Equatable {
         itemStyleIndex: itemStyleIndex ?? this.itemStyleIndex,
         showPerformanceOverlay: showPerformanceOverlay ?? this.showPerformanceOverlay,
         indexPhotoPage:  indexPhotoPage ?? this.indexPhotoPage,
-          headNum:headNum??this.headNum
+          headNum:headNum??this.headNum,
+          sex:sex??this.sex,
+          currentPhotoMode:currentPhotoMode??this.currentPhotoMode
       );
 
   @override
   String toString() {
-    return 'GlobalState{fontFamily: $fontFamily, themeColor: $themeColor, showBackGround: $showBackGround, codeStyleIndex: $codeStyleIndex, itemStyleIndex: $itemStyleIndex, showPerformanceOverlay: $showPerformanceOverlay}, indexPhotoPage: $indexPhotoPage}';
+    return 'GlobalState{fontFamily: $fontFamily, themeColor: $themeColor, showBackGround: $showBackGround, codeStyleIndex: $codeStyleIndex, itemStyleIndex: $itemStyleIndex, showPerformanceOverlay: $showPerformanceOverlay}, indexPhotoPage: $indexPhotoPage}, headNum: $headNum, sex: $sex,currentPhotoMode:$currentPhotoMode}';
   }
 }

@@ -5,13 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_star/flutter_star.dart';
 import 'package:flutter_unit/app/res/cons.dart';
 import 'package:flutter_unit/app/res/style/shape/coupon_shape_border.dart';
+import 'package:flutter_unit/blocs/bloc_exp.dart';
 import 'package:flutter_unit/blocs/collect/collect_bloc.dart';
 import 'package:flutter_unit/blocs/collect/collect_state.dart';
 import 'package:flutter_unit/blocs/detail/detail_bloc.dart';
 import 'package:flutter_unit/blocs/detail/detail_event.dart';
-import 'package:flutter_unit/blocs/home/home_bloc.dart';
-import 'package:flutter_unit/blocs/home/home_event.dart';
-import 'package:flutter_unit/components/permanent/circle_image.dart';
+import 'package:flutter_unit/blocs/search/search_bloc.dart';
+import 'package:flutter_unit/blocs/search/search_event.dart';
 import 'package:flutter_unit/components/permanent/circle_text.dart';
 import 'package:flutter_unit/components/permanent/feedback_widget.dart';
 import 'package:flutter_unit/components/permanent/tag.dart';
@@ -19,13 +19,13 @@ import 'package:flutter_unit/model/widget_model.dart';
 import 'package:flutter_unit/app/router.dart';
 import 'package:flutter_unit/views/dialogs/delete_category_dialog.dart';
 import 'package:flutter_unit/views/pages/home/PreviewImagesWidget.dart';
-class PhotoWidgetListItem extends StatelessWidget {
+class PhotoSearchWidgetListItem extends StatelessWidget {
   final WidgetModel data;
   final bool hasTopHole;
   final bool hasBottomHole;
   final bool isClip;
   final Map<String,dynamic>  photo;
-  PhotoWidgetListItem(
+  PhotoSearchWidgetListItem(
       {this.data,
       this.hasTopHole = true,
       this.hasBottomHole = false,
@@ -163,7 +163,6 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
     );
   }
 
-
   Widget buildWhereButton(BuildContext context,int checked){
 
     if (checked==1){
@@ -192,6 +191,26 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
 
 
   }
+  _resetUser(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (ctx) => Dialog(
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          child: Container(
+            width: 50,
+            child: DeleteCategoryDialog(
+              title: '撤回此用户的审核结果',
+              content: '是否确定继续执行?',
+              onSubmit: () {
+                BlocProvider.of<SearchBloc>(context).add(EventResetCheckUsers(photo,1));
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
+        ));
+  }
   _deletePhoto(BuildContext context,Map<String,dynamic> img) {
     showDialog(
         context: context,
@@ -205,7 +224,7 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
               title: '删除图片',
               content: '是否确定继续执行?',
               onSubmit: () {
-                BlocProvider.of<HomeBloc>(context).add(EventDelImg(img,1));
+                BlocProvider.of<SearchBloc>(context).add(EventDelImgs(img,1));
                 Navigator.of(context).pop();
               },
             ),
@@ -225,27 +244,7 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
               title: '拒绝此用户',
               content: '是否确定继续执行?',
               onSubmit: () {
-                BlocProvider.of<HomeBloc>(context).add(EventCheckUser(photo,1));
-                Navigator.of(context).pop();
-              },
-            ),
-          ),
-        ));
-  }
-  _resetUser(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (ctx) => Dialog(
-          elevation: 5,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          child: Container(
-            width: 50,
-            child: DeleteCategoryDialog(
-              title: '撤回此用户的审核结果',
-              content: '是否确定继续执行?',
-              onSubmit: () {
-                BlocProvider.of<HomeBloc>(context).add(EventResetCheckUser(photo,1));
+                BlocProvider.of<SearchBloc>(context).add(EventCheckUsers(photo,1));
                 Navigator.of(context).pop();
               },
             ),
@@ -265,7 +264,7 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
               title: '隐藏该用户',
               content: '是否确定继续执行?',
               onSubmit: () {
-                BlocProvider.of<HomeBloc>(context).add(EventCheckUser(photo,5));
+                BlocProvider.of<SearchBloc>(context).add(EventCheckUsers(photo,5));
                 Navigator.of(context).pop();
               },
             ),
@@ -300,7 +299,7 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
               borderRadius: BorderRadius.all(Radius.circular(20))),
           color: color,
           onPressed: (){
-            BlocProvider.of<HomeBloc>(context).add(EventCheckUser(photo,2));
+            BlocProvider.of<SearchBloc>(context).add(EventCheckUsers(photo,2));
           },
           child: Text(txt,
               style: TextStyle(color: Colors.white, fontSize: 18)),
@@ -318,7 +317,7 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
               borderRadius: BorderRadius.all(Radius.circular(20))),
           color: color,
           onPressed: (){
-            BlocProvider.of<HomeBloc>(context).add(EventCheckUser(photo,3));
+            BlocProvider.of<SearchBloc>(context).add(EventCheckUsers(photo,3));
           },
           child: Text(txt,
               style: TextStyle(color: Colors.white, fontSize: 18)),
@@ -336,25 +335,7 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
               borderRadius: BorderRadius.all(Radius.circular(20))),
           color: color,
           onPressed: (){
-            BlocProvider.of<HomeBloc>(context).add(EventCheckUser(photo,4));
-          },
-          child: Text(txt,
-              style: TextStyle(color: Colors.white, fontSize: 18)),
-        ),
-      ],
-    );
-  }
-  Widget buildRefuseButton(BuildContext context,String txt,MaterialColor color){
-    return    Column(
-      children: [
-
-        RaisedButton(
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20))),
-          color: color,
-          onPressed: (){
-            _refuseUser(context);
+            BlocProvider.of<SearchBloc>(context).add(EventCheckUsers(photo,4));
           },
           child: Text(txt,
               style: TextStyle(color: Colors.white, fontSize: 18)),
@@ -380,6 +361,25 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
       ],
     );
   }
+  Widget buildRefuseButton(BuildContext context,String txt,MaterialColor color){
+    return    Column(
+      children: [
+
+        RaisedButton(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          color: color,
+          onPressed: (){
+            _refuseUser(context);
+          },
+          child: Text(txt,
+              style: TextStyle(color: Colors.white, fontSize: 18)),
+        ),
+      ],
+    );
+  }
+
   Widget buildHideButton(BuildContext context,String txt,MaterialColor color){
     return    Column(
       children: [
@@ -401,7 +401,7 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
   Widget buildContent(BuildContext context) => Container(
         color: Color(colors[data.family.index]).withAlpha(66),
         height: 95,
-        padding: const EdgeInsets.only(top: 4, left: 0, right: 10, bottom: 10),
+        padding: const EdgeInsets.only(top: 10, left: 0, right: 10, bottom: 5),
         child: Row(
           children: <Widget>[
             buildLeading(),
@@ -473,12 +473,12 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
     return Expanded(
       child: Row(
         children: <Widget>[
-          const SizedBox(width: 1),
+          const SizedBox(width: 10),
           Expanded(
             child: Text(photo['userName']+" "+photo['tel']+" "+(photo['sex']==1?"男":"女")+" "+photo['age'].toString()+"岁 "+(photo['device']==1?"安卓 ":"苹果 "),
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
-                    fontSize: 14,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                     shadows: [
                       Shadow(color: Colors.white, offset: Offset(.3, .3))
@@ -495,14 +495,14 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
 
   Widget _buildSummary() {
     return Padding(
-      padding: const EdgeInsets.only(left: 1, bottom: 1, top: 1),
+      padding: const EdgeInsets.only(left: 10, bottom: 10, top: 5),
       child: Container(
         child: Text(
           //尾部摘要
           "型号: "+photo['machine']+"版本: "+photo['version']+" "+photo['addressed'] +" "+(photo['isAi']==1?"已认证":"未认证") +" 会员:" +photo['endtime'],
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(color: Colors.black, fontSize: 14, shadows: [
+          style: TextStyle(color: Colors.grey[600], fontSize: 14, shadows: [
             const Shadow(color: Colors.white, offset: const Offset(.5, .5))
           ]),
         ),

@@ -81,7 +81,15 @@ class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
     if (event is EventResetIndexPhotoPage) {
       yield state.copyWith(indexPhotoPage: 1);
     }
+    if (event is EventSetIndexSex) {
+      var sex = event.sex;
+      yield state.copyWith(sex: sex);
+    }
 
+    if (event is EventSetIndexMode) {
+      var mode = event.mode;
+      yield state.copyWith(currentPhotoMode: mode);
+    }
     // 首页头部数量
     if (event is EventSetIndexNum) {
       try {

@@ -19,7 +19,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
         height: 35,
         child:
         TextField(
-          autofocus: true, //自动聚焦，闪游标
+          autofocus: false, //自动聚焦，闪游标
           controller: _controller,
           maxLines: 1,
           decoration: InputDecoration(//输入框装饰

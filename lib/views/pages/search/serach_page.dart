@@ -6,6 +6,7 @@ import 'package:flutter_unit/blocs/bloc_exp.dart';
 import 'package:flutter_unit/components/permanent/circle.dart';
 import 'package:flutter_unit/storage/dao/widget_dao.dart';
 import 'package:flutter_unit/model/widget_model.dart';
+import 'package:flutter_unit/views/items/photo_search_widget_list_item.dart';
 import 'package:flutter_unit/views/items/photo_widget_list_item.dart';
 import 'package:flutter_unit/views/items/techno_widget_list_item.dart';
 import 'package:flutter_unit/views/pages/search/app_search_bar.dart';
@@ -23,9 +24,11 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  var _scaffoldkey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _scaffoldkey,
       body: WillPopScope(
         onWillPop: () async {
           //返回时 情空搜索
@@ -36,7 +39,27 @@ class _SearchPageState extends State<SearchPage> {
           slivers: <Widget>[
               _buildSliverAppBar(),
             SliverToBoxAdapter(child: _buildStarFilter()),
-            BlocBuilder<SearchBloc, SearchState>(builder:_buildBodyByState)
+        BlocListener<SearchBloc, SearchState>(
+          listener: (ctx, state) {
+            if (state is CheckUserSuccesses) {
+
+
+              _scaffoldkey.currentState.showSnackBar(SnackBar(
+                content: Text('审核成功'+state.Reason),
+                backgroundColor: Colors.green,
+              ));
+
+            }
+            if (state is DelImgSuccesses) {
+              _scaffoldkey.currentState.showSnackBar(SnackBar(
+                content: Text('删除成功'),
+                backgroundColor: Colors.blue,
+              ));
+
+            }
+          },
+          child:BlocBuilder<SearchBloc, SearchState>(builder:_buildBodyByState)
+        )
           ],
         ),
       ),
@@ -102,6 +125,13 @@ class _SearchPageState extends State<SearchPage> {
       return SliverToBoxAdapter(child: ErrorPage());
     if (state is SearchStateSuccess)
       return _buildSliverList(state.result,state.photos);
+
+    if (state is CheckUserSuccesses)
+      return _buildSliverList(state.widgets,state.photos);
+    if (state is DelImgSuccesses)
+      return _buildSliverList(state.widgets,state.photos);
+
+
     if (state is SearchStateEmpty)
       return SliverToBoxAdapter(child: EmptyPage());
     return NotSearchPage();
@@ -111,8 +141,8 @@ class _SearchPageState extends State<SearchPage> {
         delegate: SliverChildBuilderDelegate(
             (_, int index) => Container(
                 child: InkWell(
-                    onTap: () => _toDetailPage(models[0],photos[index]),
-                    child:  PhotoWidgetListItem(isClip: false, data: models[0],photo: photos[index],)
+                    //onTap: () => _toDetailPage(models[0],photos[index]),
+                    child:  PhotoSearchWidgetListItem(isClip: false, data: models[0],photo: photos[index],)
                 )),
             childCount: photos.length),
       );

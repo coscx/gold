@@ -39,13 +39,13 @@ class _TolyAppBarState extends State<TolyAppBar>
   ];
 
   static  List<String> info = [
-    '225',
-    '32',
-    '40',
-    '52',
-    '300',
-    '20',
-    '10'
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0'
   ];
 
 

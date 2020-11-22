@@ -84,3 +84,20 @@ class EventSetIndexNum extends GlobalEvent {
 
 }
 
+class EventSetIndexSex extends GlobalEvent {
+  final int sex;
+
+  const EventSetIndexSex(this.sex);
+
+  @override
+  List<Object> get props => [sex];
+}
+
+class EventSetIndexMode extends GlobalEvent {
+  final int mode;
+
+  const EventSetIndexMode(this.mode);
+
+  @override
+  List<Object> get props => [mode];
+}

@@ -32,7 +32,12 @@ class EventCheckUser extends HomeEvent {
   EventCheckUser(this.user,this.status);
 
 }
+class EventResetCheckUser extends HomeEvent {
+  final Map<String,dynamic> user;
+  final int status;
+  EventResetCheckUser(this.user,this.status);
 
+}
 class EventDelImg extends HomeEvent {
   final Map<String,dynamic> user;
   final int status;
@@ -42,7 +47,9 @@ class EventDelImg extends HomeEvent {
 
 class EventFresh extends HomeEvent {
 
-
+  final int sex;
+  final int mode;
+  EventFresh(this.sex,this.mode);
 }
 class EventLoadMore extends HomeEvent {
   final List<dynamic> user01;

@@ -44,21 +44,35 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         element['memberId'] != user['memberId']
         ).toList();
         String reason;
+        String checked;
+        String score;
+        String type;
        if(status ==1){
-         reason="，已拒绝该用户";
+         reason="，已拒绝该用户";checked="3";score="-1";type="1";
        }
         if(status ==2){
-          reason="，颜值100分";
+          reason="，颜值100分";  checked="2";score="100";type="4";
         }
         if(status ==3){
-          reason="，颜值80分";
+          reason="，颜值80分";  checked="2";score="80";type="3";
         }
         if(status ==4){
-          reason="，颜值60分";
+          reason="，颜值60分";  checked="2";score="60";type="2";
         }
         if(status ==5){
-          reason="，已隐藏该用户";
+          reason="，已隐藏该用户";  checked="10";score="-2";type="5";
         }
+
+        var result= await IssuesApi.checkUser(user['memberId'].toString(), checked,type,score);
+        if  (result['code']==200){
+
+
+        } else{
+
+        }
+
+
+
         yield CheckUserSuccess(widgets: state.props.elementAt(1), activeFamily: state.props.elementAt(0),photos: newUsers,Reason:reason);
       } catch (err) {
         print(err);
@@ -67,7 +81,38 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     }
 
+    if (event is EventResetCheckUser) {
 
+      var user=event.user;
+      List<dynamic> users =state.props.elementAt(2);
+      var status = event.status;
+      try {
+        var newUsers= users.where((element) =>
+        element['memberId'] != user['memberId']
+        ).toList();
+        String reason;
+        String checked;
+        String score;
+        String type;
+        reason="已撤回该用户"; checked="1";score="60";type="6";
+
+
+      var result= await IssuesApi.checkUser(user['memberId'].toString(), checked,type,score);
+      if  (result['code']==200){
+
+
+      } else{
+
+      }
+
+
+        yield CheckUserSuccess(widgets: state.props.elementAt(1), activeFamily: state.props.elementAt(0),photos: newUsers,Reason:reason);
+      } catch (err) {
+        print(err);
+        yield WidgetsLoadFailed();
+      }
+
+    }
 
     if (event is EventDelImg) {
 
@@ -89,7 +134,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           }
 
         }).toList();
+        var result= await IssuesApi.delPhoto(img['imgId']);
+        if  (result['code']==200){
 
+
+        } else{
+
+        }
         yield DelImgSuccess(widgets: state.props.elementAt(1), activeFamily: state.props.elementAt(0),photos: newUsers);
       } catch (err) {
         print(err);
@@ -106,7 +157,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if (event is EventFresh) {
       try {
 
-        var result= await IssuesApi.getPhoto('', '1');
+        var result= await IssuesApi.getPhoto('', '1',event.sex.toString(),event.mode.toString());
         if  (result['code']==200){
 
 
@@ -129,7 +180,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     yield WidgetsLoading();
     try {
 
-      var result= await IssuesApi.getPhoto('', '1');
+      var result= await IssuesApi.getPhoto('', '1','1','1');
       if  (result['code']==200){
 
 

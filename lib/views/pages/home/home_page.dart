@@ -37,6 +37,9 @@ class _HomePageState extends State<HomePage>
     WidgetsBinding.instance.addPostFrameCallback((callback) {
       OverlayToolWrapper.of(context).showFloating();
     });
+    Future.delayed(Duration(milliseconds: 2500)).then((e) async {
+      //_onRefresh();
+    });
   }
   @override
   void dispose() {
@@ -49,7 +52,9 @@ class _HomePageState extends State<HomePage>
   void _onRefresh() async {
     BlocProvider.of<GlobalBloc>(context).add(EventResetIndexPhotoPage());
     BlocProvider.of<GlobalBloc>(context).add((EventSetIndexNum()));
-    BlocProvider.of<HomeBloc>(context).add(EventFresh());
+    var sex =BlocProvider.of<GlobalBloc>(context).state.sex;
+    var mode =BlocProvider.of<GlobalBloc>(context).state.currentPhotoMode;
+    BlocProvider.of<HomeBloc>(context).add(EventFresh(sex,mode));
     _refreshController.refreshCompleted();
   }
 
@@ -58,8 +63,10 @@ class _HomePageState extends State<HomePage>
 
     List<dynamic> oldUsers = BlocProvider.of<HomeBloc>(context).state.props.elementAt(2);
     var currentPage =BlocProvider.of<GlobalBloc>(context).state.indexPhotoPage;
+    var sex =BlocProvider.of<GlobalBloc>(context).state.sex;
+    var mode =BlocProvider.of<GlobalBloc>(context).state.currentPhotoMode;
     BlocProvider.of<GlobalBloc>(context).add(EventIndexPhotoPage(currentPage));
-    var result= await IssuesApi.getPhoto('', (++currentPage).toString());
+    var result= await IssuesApi.getPhoto('', (++currentPage).toString(),sex.toString(),mode.toString());
     if  (result['code']==200){
 
     } else{
@@ -82,7 +89,7 @@ class _HomePageState extends State<HomePage>
         listener: (ctx, state) {
       if (state is CheckUserSuccess) {
 
-
+        BlocProvider.of<GlobalBloc>(context).add((EventSetIndexNum()));
         Scaffold.of(context).showSnackBar(SnackBar(
           content: Text('审核成功'+state.Reason),
           backgroundColor: Colors.green,
@@ -100,7 +107,9 @@ class _HomePageState extends State<HomePage>
     child:BlocBuilder<HomeBloc, HomeState>(builder: (ctx, state) {
       return Stack(
         children: <Widget>[
+
           BlocBuilder<GlobalBloc, GlobalState>(builder: _buildBackground),
+
           ScrollConfiguration(
           behavior: DyBehaviorNull(),
           child:
@@ -117,70 +126,7 @@ class _HomePageState extends State<HomePage>
                   slivers: <Widget>[
                     BlocBuilder<GlobalBloc, GlobalState>(builder: _buildHeadNum),
                      SliverToBoxAdapter(
-                    child: Container(
-                      child:  Expanded(child:
-
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            mainAxisSize: MainAxisSize.max,
-//                交叉轴的布局方式，对于column来说就是水平方向的布局方式
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            //就是字child的垂直布局方向，向上还是向下
-                            verticalDirection: VerticalDirection.down,
-                            children: <Widget>[
-                              SizedBox(
-                                width: 0,
-                              ),
-                              SizedBox(
-                                width: 50,
-                                child: Text("筛选:"),
-                              ),
-                              CupertinoSegmentedControl<int>(
-                                //unselectedColor: Colors.yellow,
-                                //selectedColor: Colors.green,
-                                //pressedColor: Colors.blue,
-                                //borderColor: Colors.red,
-                                groupValue: 1,
-                                onValueChanged: _onValueChanged,
-                                padding: EdgeInsets.only(top: 0),
-                                children: {
-                                  1: Padding(
-                                    padding: EdgeInsets.only(left: 40, right: 40),
-                                    child: Text("男"),
-                                  ),
-                                  2: Text("女"),
-
-                                },
-                              ),
-
-                              PopupMenuButton<String>(
-                                itemBuilder: (context) => buildItems(),
-                                offset: Offset(0, 50),
-                                color: Color(0xffF4FFFA),
-                                elevation: 1,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20),
-                                      topRight: Radius.circular(5),
-                                      bottomLeft: Radius.circular(5),
-                                    )),
-                                onSelected: (e) {
-                                  print(e);
-                                  if (e == '关于') {
-
-                                  }
-                                },
-                                onCanceled: () => print('onCanceled'),
-                              )
-
-                            ],
-                          )
-
-
-
-                      )
-                      ),
+                    child:  BlocBuilder<GlobalBloc, GlobalState>(builder: _buildHead),
 
 
                     ),
@@ -200,13 +146,99 @@ class _HomePageState extends State<HomePage>
     );
   }
   void _onValueChanged(int value) {
+    BlocProvider.of<GlobalBloc>(context).add(EventSetIndexSex(value));
+    var mode =BlocProvider.of<GlobalBloc>(context).state.currentPhotoMode;
+    BlocProvider.of<HomeBloc>(context).add(EventFresh(value,mode));
+  }
 
+  Widget _buildHead(BuildContext context, GlobalState state) {
+
+    return Container(
+        child:  Container(child:
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+//                交叉轴的布局方式，对于column来说就是水平方向的布局方式
+          crossAxisAlignment: CrossAxisAlignment.center,
+          //就是字child的垂直布局方向，向上还是向下
+          verticalDirection: VerticalDirection.down,
+          children: <Widget>[
+            SizedBox(
+              width: 1,
+            ),
+            SizedBox(
+              width: 40,
+              child: Text("筛选:"),
+            ),
+            CupertinoSegmentedControl<int>(
+              //unselectedColor: Colors.yellow,
+              //selectedColor: Colors.green,
+              //pressedColor: Colors.blue,
+              //borderColor: Colors.red,
+              groupValue: state.sex==0 ? 1: state.sex,
+              onValueChanged: _onValueChanged,
+              padding: EdgeInsets.only(right: 0),
+              children: {
+                1: state.sex ==1 ?Padding(
+                  padding: EdgeInsets.only(left: 40, right: 40),
+                  child: Text("男"),
+                ):Text("男"),
+                2: state.sex ==2 ?Padding(
+                  padding: EdgeInsets.only(left: 40, right: 40),
+                  child: Text("女"),
+                ):Text("女"),
+
+              },
+            ),
+
+            buildHeadTxt(context,state),
+            PopupMenuButton<String>(
+              itemBuilder: (context) => buildItems(),
+              offset: Offset(0, 40),
+              color: Color(0xffF4FFFA),
+              elevation: 1,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                    topRight: Radius.circular(5),
+                    bottomLeft: Radius.circular(5),
+                  )),
+              onSelected: (e) {
+                print(e);
+                if (e == '待审') {
+                  BlocProvider.of<GlobalBloc>(context).add(EventSetIndexMode(1));
+                  var sex =BlocProvider.of<GlobalBloc>(context).state.sex;
+                  BlocProvider.of<HomeBloc>(context).add(EventFresh(sex,1));
+                }
+                if (e == '已审') {
+                  BlocProvider.of<GlobalBloc>(context).add(EventSetIndexMode(2));
+                  var sex =BlocProvider.of<GlobalBloc>(context).state.sex;
+                  BlocProvider.of<HomeBloc>(context).add(EventFresh(sex,2));
+                }
+                if (e == '隐藏') {
+                  BlocProvider.of<GlobalBloc>(context).add(EventSetIndexMode(4));
+                  var sex =BlocProvider.of<GlobalBloc>(context).state.sex;
+                  BlocProvider.of<HomeBloc>(context).add(EventFresh(sex,4));
+                }
+              },
+              onCanceled: () => print('onCanceled'),
+            )
+
+          ],
+        )
+
+
+
+        )
+    );
   }
   List<PopupMenuItem<String>> buildItems() {
     final map = {
-      "关于": Icons.info_outline,
-      "帮助": Icons.help_outline,
-      "问题反馈": Icons.add_comment,
+      "待审": Icons.zoom_in,
+      "已审": Icons.check,
+      "隐藏": Icons.app_blocking,
     };
     return map.keys
         .toList()
@@ -223,6 +255,34 @@ class _HomePageState extends State<HomePage>
           ],
         )))
         .toList();
+  }
+
+  Widget buildHeadTxt(BuildContext context, GlobalState state) {
+    if(state.currentPhotoMode==1){
+     return SizedBox(
+        width: 50,
+        child: Text("待审核"),
+      );
+
+    }
+    if(state.currentPhotoMode==2){
+      return SizedBox(
+        width: 50,
+        child: Text("已审核"),
+      );
+
+    }
+    if(state.currentPhotoMode==4){
+      return SizedBox(
+        width: 50,
+        child: Text("已隐藏"),
+      );
+
+    }
+    return SizedBox(
+      width: 50,
+      child: Text("待审核"),
+    );
   }
   Widget _buildPersistentHeader(List<String> num) => SliverPersistentHeader(
       pinned: true,

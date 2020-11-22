@@ -55,7 +55,7 @@ class OverlayToolWrapperState extends State<OverlayToolWrapper>
 
     WidgetsBinding.instance.addPostFrameCallback((callback) {
       var px = MediaQuery.of(context).size.width - (outWidth);
-      var py = 120.0;
+      var py = 160.0;
       offset = Offset(px, py);
 
       _ctrl = AnimationController(

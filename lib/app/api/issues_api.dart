@@ -20,16 +20,33 @@ class IssuesApi {
 
     return datas;
   }
-  static Future<Map<String,dynamic>> getPhoto( String keyWord, String page) async {
+  static Future<Map<String,dynamic>> getPhoto( String keyWord, String page,String sex,String mode ) async {
     var ss = await LocalStorage.get("token");
     var token =ss.toString();
-    var data={'keywords':keyWord,'pages':page,'token':token};
+    var data={'keywords':keyWord,'pages':page,'token':token,'sexc':sex,'sel':mode};
     Response<dynamic> rep = await dio.post('/admin/service/photoflu.html',queryParameters:data );
     var datas = json.decode(rep.data);
 
     return datas;
   }
+  static Future<Map<String,dynamic>> delPhoto( String imgId, ) async {
+    var ss = await LocalStorage.get("token");
+    var token =ss.toString();
+    var data={'imgId':imgId,'token':token};
+    Response<dynamic> rep = await dio.post('/admin/service/photodelflu.html',queryParameters:data );
+    var datas = json.decode(rep.data);
 
+    return datas;
+  }
+  static Future<Map<String,dynamic>> checkUser( String memberId, String checked, String type, String score) async {
+    var ss = await LocalStorage.get("token");
+    var token =ss.toString();
+    var data={'uid':memberId,'memid':memberId,'type':type,'score':score,'checked':checked,'token':token};
+    Response<dynamic> rep = await dio.post('/admin/service/photoauditflu.html',queryParameters:data );
+    var datas = json.decode(rep.data);
+
+    return datas;
+  }
   static Future<Map<String,dynamic>> getPhotoNum( ) async {
     var ss = await LocalStorage.get("token");
     var token =ss.toString();
