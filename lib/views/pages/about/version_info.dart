@@ -108,11 +108,11 @@ class VersionInfo extends StatelessWidget {
       children: <Widget>[
         FeedbackWidget(
             onPressed: (){
-              _launchURL("https://github.com/toly1994328/FlutterUnit");
+              _launchURL("https://github.com/coscx/gold");
             },
             child: Text('《查看本项目Github仓库》',style: TextStyle(fontSize: 12,color: Color(0xff616C84),),)),
         Text('Power By GUGU Team',style: TextStyle(fontSize: 12,color: Colors.grey),),
-        Text('Copyright © 2008-2020 Toly1994',style: TextStyle(fontSize: 12,color: Colors.grey),),
+        Text('Copyright © 2008-2020 ',style: TextStyle(fontSize: 12,color: Colors.grey),),
       ],
     );
   }
