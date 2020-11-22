@@ -31,7 +31,7 @@ class CustomText extends StatelessWidget {
       width: 200,
       color: Colors.cyanAccent.withAlpha(33),
       height: 200 * 0.618 * 0.618,
-      child: Text("toly-GUGU Team-1994`", style: style),
+      child: Text("GUGU Team`", style: style),
     );
   }
 }

@@ -5,9 +5,7 @@ import 'package:flutter_unit/components/permanent/animated_text.dart';
 import 'package:flutter_unit/components/permanent/circle_image.dart';
 
 class LayoutUnitPage extends StatelessWidget {
-  final info = '【Flutter布局集录】是Unit项目计划的第二阶段的功能之一。'
-      '将收录大量的布局样板，一者，方便直接使用；二者，方便布局的学习。'
-      '本集录将支持布局征集，愿开发者共同集录。';
+  final info = '【Flutter布局集录】。';
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class LayoutUnitPage extends StatelessWidget {
                 ),
                 SizedBox(height: 10,),
                 Text(
-                  'Flutter Unit 2.0 计划',
+                  'Flutter ',
                   style: TextStyle(
                     color: Colors.green,
                     fontSize: 18,
@@ -81,7 +79,7 @@ class LayoutUnitPage extends StatelessWidget {
     return Positioned(
       bottom: 80,
       child:
-      Text("Flutter Unit 布局征集方案(待完成)",
+      Text("Flutter",
           style: TextStyle(
               color: Colors.blue,
               decoration: TextDecoration.underline,

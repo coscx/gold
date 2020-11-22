@@ -22,11 +22,11 @@ import 'package:flutter/material.dart';
 //    }
 class CustomSimpleDialog extends StatelessWidget {
   final info = [
-    '性别:    男     未婚',
-    '微信:    zdl1994328',
+    '性别:    男 ',
+    '微信:    28',
     "掘金:    GUGU Team",
-    "github:    toly1994328",
-    "邮箱:    1981462008@qq.com",
+    "github:    122",
+    "邮箱:    11",
   ];
 
   @override

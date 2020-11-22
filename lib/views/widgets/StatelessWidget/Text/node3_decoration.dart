@@ -19,7 +19,7 @@ class DecorationText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "19940328",
+      "0328",
       style: TextStyle(
           fontSize: 50,
           fontWeight: FontWeight.bold,

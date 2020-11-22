@@ -67,7 +67,7 @@ class _CollectPageState extends State<CollectPage>
       backgroundColor: BlocProvider.of<HomeBloc>(context).activeHomeColor,
       actions: <Widget>[_buildAddActionBuilder(context)],
       title: Text(
-        '收藏集 CollectUnit',
+        '收藏集',
         style: TextStyle(
             color: Colors.white, //标题
             fontSize: 18,

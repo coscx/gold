@@ -69,7 +69,7 @@ class FontSettingPage extends StatelessWidget {
                       ])),
                       alignment: Alignment(0, 0.4),
                       child: Text(
-                        'GUGU Team\n@toly1994',
+                        'GUGU Team\n',
                         style: TextStyle(fontFamily: e, fontSize: 16),
                       )),
                 ),

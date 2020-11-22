@@ -41,7 +41,7 @@ class _CustomSnackBarState extends State<CustomSnackBar> {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(10), topRight: Radius.circular(10))),
-      content: Text('Wellcome to for join Flutter Unit!'),
+      content: Text('Wellcome to for join Flutter !'),
       duration: Duration(seconds: 3),
       //持续时间
       backgroundColor: Colors.red,
