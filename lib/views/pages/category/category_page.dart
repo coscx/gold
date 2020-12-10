@@ -5,6 +5,7 @@ import 'package:flutter_unit/blocs/bloc_exp.dart';
 import 'package:flutter_unit/components/permanent/circle.dart';
 
 import 'package:flutter_unit/model/category_model.dart';
+import 'package:flutter_unit/storage/dao/local_storage.dart';
 import 'package:flutter_unit/views/dialogs/delete_category_dialog.dart';
 import 'package:flutter_unit/views/items/category_list_item.dart';
 
@@ -42,7 +43,11 @@ class CategoryPage extends StatelessWidget {
           delegate: SliverChildBuilderDelegate(
                   (_, index) => Container(
                 child: GestureDetector(
-                    onTap: () => _toDetailPage(context, state.categories[index]),
+                    onTap: () {
+                      _toDataPage(context, state.categories[index]);
+                      //_toDetailPage(context, state.categories[index]),
+                    }
+                  ,
                     child:  CategoryListItem(
                       data: state.categories[index],
                       onDeleteItemClick: (model) => _deleteCollect(context, model),
@@ -120,6 +125,15 @@ class CategoryPage extends StatelessWidget {
         .add(EventLoadCategoryWidget(model.id));
     Navigator.pushNamed(context, UnitRouter.category_show, arguments: model);
   }
+  _toDataPage(BuildContext context, CategoryModel model) async {
 
+    var ss = await LocalStorage.get("token");
+    var sss =ss.toString();
+    if(sss != "" || ss != null){
+      Navigator.pushNamed(context, UnitRouter.category_data, arguments: "http://as.gugu2019.com/admin/data/info?token="+sss);
+    }
+
+
+  }
 
 }
