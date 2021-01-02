@@ -14,7 +14,7 @@ import '../permanent/code/highlighter_style.dart';
 
 /// 说明: 一个Widget的知识点对应的界面
 
-class WidgetNodePanel extends StatefulWidget {
+class WidgetNodePanelDetail extends StatefulWidget {
   final String text;
   final String subText;
   final String code;
@@ -22,7 +22,7 @@ class WidgetNodePanel extends StatefulWidget {
   final HighlighterStyle codeStyle;
   final String codeFamily;
 
-  WidgetNodePanel(
+  WidgetNodePanelDetail(
       {this.text,
       this.subText,
       this.code,
@@ -31,10 +31,10 @@ class WidgetNodePanel extends StatefulWidget {
       this.codeFamily});
 
   @override
-  _WidgetNodePanelState createState() => _WidgetNodePanelState();
+  _WidgetNodePanelDetailState createState() => _WidgetNodePanelDetailState();
 }
 
-class _WidgetNodePanelState extends State<WidgetNodePanel> {
+class _WidgetNodePanelDetailState extends State<WidgetNodePanelDetail> {
   CrossFadeState _crossFadeState = CrossFadeState.showFirst;
 
   bool get isFirst => _crossFadeState == CrossFadeState.showFirst;
@@ -54,7 +54,7 @@ class _WidgetNodePanelState extends State<WidgetNodePanel> {
           ),
           //_buildCode(context),
           Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 0,left: 30,),
+            padding: const EdgeInsets.only(top: 0, bottom: 0,left: 0,),
             child:
             Visibility(
               visible:show,

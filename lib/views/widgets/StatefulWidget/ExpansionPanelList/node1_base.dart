@@ -84,7 +84,8 @@ class _CustomExpansionPanelListState extends State<CustomExpansionPanelList> {
               Shadow(color: Colors.black, offset: Offset(.5, .5), blurRadius: 2)
             ]),
           ),
-        ));
+        )
+    );
   }
 
   String colorString(Color color) =>

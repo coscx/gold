@@ -5,9 +5,11 @@ import 'package:flutter_unit/app/res/cons.dart';
 import 'package:flutter_unit/app/res/toly_icon.dart';
 import 'package:flutter_unit/app/utils/Toast.dart';
 import 'package:flutter_unit/blocs/bloc_exp.dart';
+import 'package:flutter_unit/components/permanent/circle.dart';
 import 'package:flutter_unit/components/permanent/feedback_widget.dart';
 import 'package:flutter_unit/components/permanent/panel.dart';
 import 'package:flutter_unit/components/project/widget_node_panel.dart';
+import 'package:flutter_unit/components/project/widget_node_panel_user_detail.dart';
 import 'package:flutter_unit/model/node_model.dart';
 import 'package:flutter_unit/model/widget_model.dart';
 import 'package:flutter_unit/views/pages/widget_detail/category_end_drawer.dart';
@@ -144,77 +146,592 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
   Widget _buildDetail(BuildContext context, DetailState state) {
     print('build---${state.runtimeType}---');
     if (state is DetailWithData) {
+
+     List pair= state.userdetails['pair'];
+     List like= state.userdetails['like'];
+     List belike= state.userdetails['belike'];
+     List ai= state.userdetails['ai'];
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+
           Row(
+            mainAxisAlignment:
+            MainAxisAlignment
+                .start,
             children: <Widget>[
-              const Padding(
-                padding: EdgeInsets.only(left: 15, right: 5),
-                child: Icon(
-                  Icons.photo,
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child: Circle(
                   color: Colors.blue,
+                  radius: 5,
                 ),
               ),
-              const Text(
-                '用户图片',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child:  Text(
+                  "使用总次数: "+state.userdetails['allindex'].toString(),
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+          Row(
+            mainAxisAlignment:
+            MainAxisAlignment
+                .start,
+            children: <Widget>[
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child: Circle(
+                  color: Colors.blue,
+                  radius: 5,
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child:  Text(
+                  "配对率: "+state.userdetails['pairs'].toString(),
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+
+
+          Row(
+            mainAxisAlignment:
+            MainAxisAlignment
+                .start,
+            children: <Widget>[
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child: Circle(
+                  color: Colors.blue,
+                  radius: 5,
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child:  Text(
+                  "审核状态: "+(state.userdetails['user']['checked']== 1?"未审核":"已审核"),
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+
+          Row(
+            mainAxisAlignment:
+            MainAxisAlignment
+                .start,
+            children: <Widget>[
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child: Circle(
+                  color: Colors.blue,
+                  radius: 5,
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child:  Text(
+                  "注册时间: "+(state.userdetails['user']['addtime']== 0?"":DateTime.fromMillisecondsSinceEpoch(state.userdetails['user']['addtime']*1000).toString()),
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+
+
+          Row(
+            mainAxisAlignment:
+            MainAxisAlignment
+                .start,
+            children: <Widget>[
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child: Circle(
+                  color: Colors.blue,
+                  radius: 5,
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child:  Text(
+                  "最后活跃时间: "+(state.userdetails['user']['timesd']== 0?"":DateTime.fromMillisecondsSinceEpoch(state.userdetails['user']['timesd']*1000).toString()),
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+
+
+          Row(
+            mainAxisAlignment:
+            MainAxisAlignment
+                .start,
+            children: <Widget>[
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child: Circle(
+                  color: Colors.blue,
+                  radius: 5,
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child:  Text(
+                  "审核时间: "+ (state.userdetails['user']['checktime']== 0?"":DateTime.fromMillisecondsSinceEpoch(state.userdetails['user']['checktime']*1000).toString()),
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+
+
+          Row(
+            mainAxisAlignment:
+            MainAxisAlignment
+                .start,
+            children: <Widget>[
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child: Circle(
+                  color: Colors.blue,
+                  radius: 5,
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child:  Text(
+                  "会员到期时间: ",
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 2.0,
+                ),
+                child:  Text(
+                 state.userdetails['user']['endtime'],
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.red,
+                  ),
+                ),
               ),
             ],
           ),
-          _buildLinkTo(
-            context,
-            state.userdetails,
+
+          Row(
+            mainAxisAlignment:
+            MainAxisAlignment
+                .start,
+            children: <Widget>[
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child: Circle(
+                  color: Colors.blue,
+                  radius: 5,
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child:  Text(
+                  "封号状态: ",
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 2.0,
+                ),
+                child:  Text(
+                  "正常",
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.green,
+                  ),
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child:  Text(
+                  "剩余",
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 2.0,
+                ),
+                child:  Text(
+                  "0",
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.green,
+                  ),
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 2.0,
+                ),
+                child:  Text(
+                  "天",
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ],
           ),
-          Divider(),
+          Row(
+            mainAxisAlignment:
+            MainAxisAlignment
+                .start,
+            children: <Widget>[
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child: Circle(
+                  color: Colors.blue,
+                  radius: 5,
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child:  Text(
+                  "禁言状态: ",
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 2.0,
+                ),
+                child:  Text(
+                  "正常",
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.green,
+                  ),
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child:  Text(
+                  "剩余",
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 2.0,
+                ),
+                child:  Text(
+                  "0",
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.green,
+                  ),
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 2.0,
+                ),
+                child:  Text(
+                  "天",
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          WidgetNodePanelDetail(
+              codeFamily: 'Inconsolata',
+              text: "用户图片",
+              code: "",
+              show:  _buildLinkTo(
+                context,
+                state.userdetails,
+              ),
+          ),
+
           //_buildNodes(state.nodes, state.widgetModel.name)
           WidgetNodePanel(
             codeFamily: 'Inconsolata',
-            text: "滑动次数 (39次 A:39)",
-            code: "待完善",
-            show: Container(),
+            text: "滑动次数 ("+state.userdetails['slidenum'].toString()+"次 A:"+state.userdetails['slidenumA'].toString()+")",
+            code: "",
+            show: Container()
           ),
           WidgetNodePanel(
             codeFamily: 'Inconsolata',
-            text: "滑动过他的 (39人 A:39)",
+            text: "滑动过TA ("+state.userdetails['clickhisnum'].toString()+"次 A:"+state.userdetails['clickhisnumA'].toString()+")",
             code: "待完善",
-            show: Container(),
+            show: Container(
+
+
+            )
           ),
           WidgetNodePanel(
             codeFamily: 'Inconsolata',
-            text: "配对人数 (39人 A:39)",
+            text: "配对人数 ("+state.userdetails['pairnum'].toString()+"次 A:"+state.userdetails['pairnumA'].toString()+")",
             code: "待完善",
-            show: Container(),
+            show: Container(
+              width: 500,
+              // height: 300,
+              child:
+              Wrap(
+                  alignment: WrapAlignment.start,
+                  direction: Axis.horizontal,
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: pair.map((e) => CircleAvatar(
+                    radius: 20.0,
+                    backgroundImage: NetworkImage( e['thumbimg']),
+                  )).toList()),
+
+            )
           ),
           WidgetNodePanel(
             codeFamily: 'Inconsolata',
-            text: "TA喜欢的 (39人 A:39)",
+            text: "TA喜欢的 ("+state.userdetails['likenum'].toString()+"次 A:"+state.userdetails['likenumA'].toString()+")",
             code: "待完善",
-            show: Container(),
+            show: Container(
+              width: 500,
+              // height: 300,
+              child:
+              Wrap(
+                  alignment: WrapAlignment.start,
+                  direction: Axis.horizontal,
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: like.map((e) => CircleAvatar(
+                    radius: 20.0,
+                    backgroundImage: NetworkImage( e['thumbimg']),
+                  )).toList()),
+
+            )
           ),
           WidgetNodePanel(
             codeFamily: 'Inconsolata',
-            text: "喜欢TA的 (39人 A:39)",
+            text: "喜欢TA的 ("+state.userdetails['belikenum'].toString()+"次 A:"+state.userdetails['belikenumA'].toString()+")",
             code: "待完善",
-            show: Container(),
+            show: Container(
+              width: 500,
+              // height: 300,
+              child:
+              Wrap(
+                  alignment: WrapAlignment.start,
+                  direction: Axis.horizontal,
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: belike.map((e) => CircleAvatar(
+                    radius: 20.0,
+                    backgroundImage: NetworkImage( e['thumbimg']),
+                  )).toList()),
+
+            )
           ),
           WidgetNodePanel(
             codeFamily: 'Inconsolata',
-            text: "AI照片 (39张 A:39)",
+            text: "AI照片 ("+state.userdetails['ainum'].toString()+"张)",
+            code: "待完善",
+            show: Container(
+              width: 500,
+              // height: 300,
+              child:
+              Wrap(
+                  alignment: WrapAlignment.start,
+                  direction: Axis.horizontal,
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: ai.map((e) => CircleAvatar(
+                    radius: 20.0,
+                    backgroundImage: NetworkImage( e['imagepath']),
+                  )).toList()),
+
+            ),
+          )
+          ,
+          WidgetNodePanel(
+            codeFamily: 'Inconsolata',
+            text: "被投诉记录 ("+state.userdetails['complainnumA'].toString()+"次)",
             code: "待完善",
             show: Container(),
           )
           ,
           WidgetNodePanel(
             codeFamily: 'Inconsolata',
-            text: "被投诉记录 (39次 A:39)",
-            code: "待完善",
-            show: Container(),
-          )
-          ,
-          WidgetNodePanel(
-            codeFamily: 'Inconsolata',
-            text: "解除配对 (39次 A:39)",
+            text: "解除配对 ("+state.userdetails['unpairnum'].toString()+"次 A:"+state.userdetails['unpairnumA'].toString()+")",
             code: "待完善",
             show: Container(),
           )
@@ -318,7 +835,7 @@ class WidgetDetailTitle extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 20.0, left: 20),
+              padding: const EdgeInsets.only(top: 5.0, left: 20),
               child: Text(
                 "用户名："  + usertail['user']['userName'],
                 style: TextStyle(
@@ -328,7 +845,7 @@ class WidgetDetailTitle extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 8,top: 2),
               child: Panel(child: Text(
                    "性别："  + (usertail['user']['sex'].toString()=="1"?"男":"女")+
                    " 年龄："  + usertail['user']['age'].toString()+
@@ -344,9 +861,9 @@ class WidgetDetailTitle extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
-            height: 100,
+            height: 80,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(right: 16),
               child: Hero(
                   tag: "hero_widget_image_${usertail['user']['memberId'].toString()}",
                   child: ClipRRect(
@@ -359,10 +876,7 @@ class WidgetDetailTitle extends StatelessWidget {
                       ).image))),
             ),
           ),
-          StarScore(
-            score: model.lever,
-            star: Star(size: 15, fillColor: Colors.blue),
-          )
+
         ],
       );
 }
