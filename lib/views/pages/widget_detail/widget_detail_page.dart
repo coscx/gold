@@ -1,10 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_star/flutter_star.dart';
 import 'package:flutter_unit/app/res/cons.dart';
 import 'package:flutter_unit/app/res/toly_icon.dart';
+import 'package:flutter_unit/app/router.dart';
 import 'package:flutter_unit/app/utils/Toast.dart';
 import 'package:flutter_unit/blocs/bloc_exp.dart';
+import 'package:flutter_unit/components/imageview/image_preview_page.dart';
+import 'package:flutter_unit/components/imageview/image_preview_view.dart';
 import 'package:flutter_unit/components/permanent/circle.dart';
 import 'package:flutter_unit/components/permanent/feedback_widget.dart';
 import 'package:flutter_unit/components/permanent/panel.dart';
@@ -12,6 +16,7 @@ import 'package:flutter_unit/components/project/widget_node_panel.dart';
 import 'package:flutter_unit/components/project/widget_node_panel_user_detail.dart';
 import 'package:flutter_unit/model/node_model.dart';
 import 'package:flutter_unit/model/widget_model.dart';
+import 'package:flutter_unit/views/dialogs/delete_category_dialog.dart';
 import 'package:flutter_unit/views/pages/widget_detail/category_end_drawer.dart';
 import 'package:flutter_unit/views/widgets/widgets_map.dart';
 
@@ -405,7 +410,7 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
                   left: 2.0,
                 ),
                 child:  Text(
-                 state.userdetails['user']['endtime'],
+                 state.userdetails['user']['endtime']==""?"未开通会员":state.userdetails['user']['endtime'],
                   style: TextStyle(
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.normal,
@@ -487,7 +492,7 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
                   left: 2.0,
                 ),
                 child:  Text(
-                  "0",
+                  state.userdetails['user']['status']==1?state.userdetails['disday']:"0",
                   style: TextStyle(
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.normal,
@@ -584,7 +589,7 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
                   left: 2.0,
                 ),
                 child:  Text(
-                  "0",
+                  state.userdetails['user']['comment']==1?state.userdetails['day']:"0",
                   style: TextStyle(
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.normal,
@@ -654,10 +659,20 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
                   direction: Axis.horizontal,
                   spacing: 10,
                   runSpacing: 10,
-                  children: pair.map((e) => CircleAvatar(
-                    radius: 20.0,
-                    backgroundImage: NetworkImage( e['thumbimg']),
-                  )).toList()),
+                  children: pair.map((e) =>
+                  GestureDetector(
+                    onTap:() {
+                      BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(widget.model,e));
+                      Navigator.pushNamed(context, UnitRouter.widget_detail, arguments: widget.model);
+                    },
+                    //() => _onLongPress(context,img['imagepath']),
+                    child: CircleAvatar(
+                      radius: 20.0,
+                      backgroundImage: NetworkImage( e['thumbimg']),
+                  ))
+
+
+                  ).toList()),
 
             )
           ),
@@ -674,10 +689,19 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
                   direction: Axis.horizontal,
                   spacing: 10,
                   runSpacing: 10,
-                  children: like.map((e) => CircleAvatar(
-                    radius: 20.0,
-                    backgroundImage: NetworkImage( e['thumbimg']),
-                  )).toList()),
+                  children: like.map((e) =>
+                      GestureDetector(
+                          onTap:() {
+                            BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(widget.model,e));
+                            Navigator.pushNamed(context, UnitRouter.widget_detail, arguments: widget.model);
+                          },
+                          //() => _onLongPress(context,img['imagepath']),
+                          child: CircleAvatar(
+                            radius: 20.0,
+                            backgroundImage: NetworkImage( e['thumbimg']),
+                          ))
+
+                  ).toList()),
 
             )
           ),
@@ -694,10 +718,19 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
                   direction: Axis.horizontal,
                   spacing: 10,
                   runSpacing: 10,
-                  children: belike.map((e) => CircleAvatar(
-                    radius: 20.0,
-                    backgroundImage: NetworkImage( e['thumbimg']),
-                  )).toList()),
+                  children: belike.map((e) =>
+                      GestureDetector(
+                          onTap:() {
+                            BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(widget.model,e));
+                            Navigator.pushNamed(context, UnitRouter.widget_detail, arguments: widget.model);
+                          },
+                          //() => _onLongPress(context,img['imagepath']),
+                          child: CircleAvatar(
+                            radius: 20.0,
+                            backgroundImage: NetworkImage( e['thumbimg']),
+                          ))
+
+                  ).toList()),
 
             )
           ),
@@ -714,10 +747,26 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
                   direction: Axis.horizontal,
                   spacing: 10,
                   runSpacing: 10,
-                  children: ai.map((e) => CircleAvatar(
-                    radius: 20.0,
-                    backgroundImage: NetworkImage( e['imagepath']),
-                  )).toList()),
+                  children: ai.map((e) =>
+                      GestureDetector(
+                          onTap:() {
+                            ImagePreview.preview(
+                              context,
+                              images: List.generate(1, (index) {
+                                return ImageOptions(
+                                  url: e['imagepath'],
+                                  tag: e['imagepath'],
+                                );
+                              }),
+
+                            );
+                          },
+                          //() => _onLongPress(context,img['imagepath']),
+                          child: CircleAvatar(
+                            radius: 20.0,
+                            backgroundImage: NetworkImage( e['imagepath']),
+                          ))
+                  ).toList()),
 
             ),
           )
@@ -773,9 +822,24 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
     List<Widget> list = [];
     imgList.map((e) => {
 
-      list.add( Column(
+      list.add( Stack(
       children:<Widget> [
-        Container(
+          GestureDetector(
+          onTap:() {
+              ImagePreview.preview(
+              context,
+              images: List.generate(1, (index) {
+                  return ImageOptions(
+                    url: e['imagepath'],
+                    tag: e['imagepath'],
+                    );
+                  }),
+
+              );
+          },
+        //() => _onLongPress(context,img['imagepath']),
+          child: Container(
+          color: Colors.black12,
           margin: EdgeInsets.all(10),
           width: 110,
           height: 200,
@@ -786,8 +850,21 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
             ).image,
           ),
 
-        )
-
+        )),
+        Positioned(
+            top: 8,
+            right: 5,
+            child:
+            FeedbackWidget(
+              onPressed: () {
+                _deletePhoto(context,e);
+              },
+              child: const Icon(
+                CupertinoIcons.delete_solid,
+                color: Colors.red,
+              ),
+            )
+        ),
       ],
 
     ))
@@ -805,7 +882,26 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
     );
   }
 }
-
+_deletePhoto(BuildContext context,Map<String,dynamic> img) {
+  showDialog(
+      context: context,
+      builder: (ctx) => Dialog(
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        child: Container(
+          width: 50,
+          child: DeleteCategoryDialog(
+            title: '删除图片',
+            content: '是否确定继续执行?',
+            onSubmit: () {
+              BlocProvider.of<HomeBloc>(context).add(EventDelImg(img,1));
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
+      ));
+}
 class WidgetDetailTitle extends StatelessWidget {
   final WidgetModel model;
   final Map<String,dynamic> usertail;

@@ -11,6 +11,8 @@ import 'package:flutter_unit/blocs/detail/detail_bloc.dart';
 import 'package:flutter_unit/blocs/detail/detail_event.dart';
 import 'package:flutter_unit/blocs/home/home_bloc.dart';
 import 'package:flutter_unit/blocs/home/home_event.dart';
+import 'package:flutter_unit/components/imageview/image_preview_page.dart';
+import 'package:flutter_unit/components/imageview/image_preview_view.dart';
 import 'package:flutter_unit/components/permanent/circle_image.dart';
 import 'package:flutter_unit/components/permanent/circle_text.dart';
 import 'package:flutter_unit/components/permanent/feedback_widget.dart';
@@ -80,8 +82,19 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
                 Column(
                   children:<Widget> [
                  GestureDetector(
+                onTap:() {
+                  ImagePreview.preview(
+                    context,
+                    images: List.generate(1, (index) {
+                      return ImageOptions(
+                        url: img['imagepath'],
+                        tag: img['imagepath'],
+                      );
+                    }),
 
-                onLongPress: () => _onLongPress(context,img['imagepath']),
+                  );
+                },
+                     //() => _onLongPress(context,img['imagepath']),
                 child: Container(
                       child: CachedNetworkImage(imageUrl: img['imagepath'],
                       width: 80,
@@ -145,7 +158,18 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
                     children:<Widget> [
                       GestureDetector(
 
-                          onLongPress: () => _onLongPress(context,img['imagepath']),
+                          onTap:() {
+                            ImagePreview.preview(
+                              context,
+                              images: List.generate(1, (index) {
+                                return ImageOptions(
+                                  url: img['imagepath'],
+                                  tag: img['imagepath'],
+                                );
+                              }),
+
+                            );
+                          },
                           child: Container(
                             child: CachedNetworkImage(imageUrl: img['imagepath'],
                               width: 80,
