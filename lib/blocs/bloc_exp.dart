@@ -33,7 +33,13 @@ export 'home/home_bloc.dart';
 export 'home/home_state.dart';
 export 'home/home_event.dart';
 
+export 'bigdata/big_data_bloc.dart';
+export 'bigdata/big_data_state.dart';
+export 'bigdata/big_data_event.dart';
 
+export 'data/data_bloc.dart';
+export 'data/data_state.dart';
+export 'data/data_event.dart';
 
 export 'point/point_bloc.dart';
 export 'point/point_state.dart';

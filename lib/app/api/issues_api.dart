@@ -38,6 +38,22 @@ class IssuesApi {
 
     return datas;
   }
+  static Future<Map<String,dynamic>> getData( ) async {
+    var ss = await LocalStorage.get("token");
+    var token =ss.toString();
+    var data={'token':token};
+    Response<dynamic> rep = await dio.post('/admin/data/infoflu.html',queryParameters:data );
+    var datas = json.decode(rep.data);
+    return datas;
+  }
+  static Future<Map<String,dynamic>> getBigData( ) async {
+    var ss = await LocalStorage.get("token");
+    var token =ss.toString();
+    var data={'token':token};
+    Response<dynamic> rep = await dio.post('/admin/data/datamenuflu.html',queryParameters:data );
+    var datas = json.decode(rep.data);
+    return datas;
+  }
   static Future<Map<String,dynamic>> checkUser( String memberId, String checked, String type, String score) async {
     var ss = await LocalStorage.get("token");
     var token =ss.toString();

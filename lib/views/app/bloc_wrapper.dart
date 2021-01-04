@@ -55,7 +55,8 @@ class _BlocWrapperState extends State<BlocWrapper> {
       BlocProvider<PointCommentBloc>(create: (_) => PointCommentBloc()),
 
           BlocProvider<LoginBloc>(create: (_) => LoginBloc()),
-
+          BlocProvider<DataBloc>(create: (_) => DataBloc()),
+          BlocProvider<BigDataBloc>(create: (_) => BigDataBloc()),
 
         ], child: widget.child);
   }

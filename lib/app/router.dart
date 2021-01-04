@@ -17,7 +17,7 @@ import 'package:flutter_unit/views/pages/setting/item_style_setting.dart';
 import 'package:flutter_unit/views/pages/setting/theme_color_setting.dart';
 import 'package:flutter_unit/views/pages/unit_todo/attr_unit_page.dart';
 import 'package:flutter_unit/views/pages/unit_todo/point_unit_page.dart';
-
+import 'package:flutter_unit/views/pages/data/card.dart';
 import 'package:flutter_unit/views/pages/widget_detail/widget_detail_page.dart';
 import 'package:flutter_unit/views/pages/unit_todo/layout_unit_page.dart';
 import 'package:flutter_unit/views/pages/setting/setting_page.dart';
@@ -42,7 +42,7 @@ class UnitRouter {
   static const String item_style_setting = 'ItemStyleSettingPage';
   static const String version_info = 'VersionInfo';
   static const String login = 'login';
-
+  static const String index_page = 'IndexPage';
   static const String category_show = 'CategoryShow';
   static const String issues_point = 'IssuesPointPage';
   static const String category_data = 'CategoryData';
@@ -82,7 +82,8 @@ class UnitRouter {
         return Right2LeftRouter(child: VersionInfo());
       case issues_point:
         return Right2LeftRouter(child: IssuesPointPage());
-
+      case index_page:
+        return Right2LeftRouter(child: IndexPage());
       case login:
         return Right2LeftRouter(child: LoginPage());
 
