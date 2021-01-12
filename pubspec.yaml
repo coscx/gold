@@ -45,6 +45,7 @@ dependencies:
   flutter_screenutil: ^4.0.0
   badges: ^1.1.0
   flutter_svg: ^0.18.1
+  lottie: ^0.7.0+1
 dev_dependencies:
   flutter_test:
     sdk: flutter

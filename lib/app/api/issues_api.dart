@@ -81,6 +81,15 @@ class IssuesApi {
 
     return datas;
   }
+  static Future<Map<String,dynamic>> changeSexDetail( String memberId,int sex) async {
+    var ss = await LocalStorage.get("token");
+    var token =ss.toString();
+    var data={'mem':memberId,'token':token,"sex":sex};
+    Response<dynamic> rep = await dio.post('/admin/service/changesexflu.html',queryParameters:data );
+    var datas = json.decode(rep.data);
+
+    return datas;
+  }
   static Future<Map<String,dynamic>> searchPhoto( String keyWord, String page) async {
     var ss = await LocalStorage.get("token");
     var token =ss.toString();

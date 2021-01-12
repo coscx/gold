@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gifimage/flutter_gifimage.dart';
 import 'package:flutter_star/flutter_star.dart';
 import 'package:flutter_unit/app/res/cons.dart';
 import 'package:flutter_unit/app/res/toly_icon.dart';
@@ -17,6 +18,7 @@ import 'package:flutter_unit/components/project/widget_node_panel_user_detail.da
 import 'package:flutter_unit/model/node_model.dart';
 import 'package:flutter_unit/model/widget_model.dart';
 import 'package:flutter_unit/views/dialogs/delete_category_dialog.dart';
+import 'package:flutter_unit/views/dialogs/change_category_dialog.dart';
 import 'package:flutter_unit/views/pages/widget_detail/category_end_drawer.dart';
 import 'package:flutter_unit/views/widgets/widgets_map.dart';
 
@@ -29,11 +31,12 @@ class WidgetDetailPage extends StatefulWidget {
   _WidgetDetailPageState createState() => _WidgetDetailPageState();
 }
 
-class _WidgetDetailPageState extends State<WidgetDetailPage> {
+class _WidgetDetailPageState extends State<WidgetDetailPage> with SingleTickerProviderStateMixin {
   List<WidgetModel> _modelStack = [];
-
+  GifController controllers;
   @override
   void initState() {
+    controllers= GifController(vsync: this);
     _modelStack.add(widget.model);
     super.initState();
   }
@@ -159,7 +162,59 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Row(
+            mainAxisAlignment:
+            MainAxisAlignment
+                .start,
+            children: <Widget>[
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child: Circle(
+                  color: Colors.blue,
+                  radius: 5,
+                ),
+              ),
+              Container(
+                  padding:  const EdgeInsets.only(
+                    top: 4.0,
+                    left: 10.0,
+                  ),
+                  child:  Text(
+                    "修改性别: ",
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.normal,
+                      decoration: TextDecoration.none,
+                      fontSize: 14.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
 
+                GestureDetector(
+                onTap: (){
+                controllers.value = 0;
+                controllers.duration=Duration(milliseconds:400);
+                // from current frame to 26 frame
+                controllers.animateTo(30);
+               _changeSex(context,state.userdetails);
+                },
+                child: Container(
+                width: 60,
+                height: 60,
+                child: GifImage(
+
+                  controller: controllers,
+                  image:   Image.asset(
+                    "assets/images/sex.gif",
+                  ).image,
+                ),
+              ))
+            ],
+          ),
           Row(
             mainAxisAlignment:
             MainAxisAlignment
@@ -896,6 +951,38 @@ _deletePhoto(BuildContext context,Map<String,dynamic> img) {
             content: '是否确定继续执行?',
             onSubmit: () {
               BlocProvider.of<HomeBloc>(context).add(EventDelImg(img,1));
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
+      ));
+}
+_changeSex(BuildContext context,Map<String,dynamic> img) {
+  showDialog(
+      context: context,
+      builder: (ctx) => Dialog(
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        child: Container(
+          width: 50,
+          child: ChangeCategoryDialog(
+            title: '修改性别',
+            content: '是否确定继续执行?',
+            onSubmit: () {
+              BlocProvider.of<DetailBloc>(context).add(ChangeSexDetail(1,img));
+              Scaffold.of(context).showSnackBar(SnackBar(
+                content: Text('修改成功'),
+                backgroundColor: Colors.green,
+              ));
+              Navigator.of(context).pop();
+            },
+            onCancel: (){
+              BlocProvider.of<DetailBloc>(context).add(ChangeSexDetail(2,img));
+              Scaffold.of(context).showSnackBar(SnackBar(
+                content: Text('修改成功'),
+                backgroundColor: Colors.green,
+              ));
               Navigator.of(context).pop();
             },
           ),

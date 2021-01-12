@@ -17,7 +17,7 @@ class FetchWidgetDetail extends DetailEvent {
   const FetchWidgetDetail(this.widgetModel,this.photo);
 
   @override
-  List<Object> get props => [widgetModel];
+  List<Object> get props => [widgetModel,photo];
 
   @override
   String toString() {
@@ -28,4 +28,18 @@ class FetchWidgetDetail extends DetailEvent {
 
 class ResetDetailState extends DetailEvent {
 
+}
+
+class ChangeSexDetail extends DetailEvent {
+  final int sex;
+  final Map<String,dynamic> photo;
+  const ChangeSexDetail(this.sex,this.photo);
+
+  @override
+  List<Object> get props => [sex,photo];
+
+  @override
+  String toString() {
+    return 'FetchWidgetDetail{widgetModel: }';
+  }
 }

@@ -7,7 +7,7 @@ import 'package:flutter_unit/model/widget_model.dart';
 
 /// 说明: 详情状态类
 
-abstract class DetailState extends Equatable {
+abstract class DetailState  {
   const DetailState();
 
   @override
@@ -19,10 +19,10 @@ class DetailWithData extends DetailState {
   final List<WidgetModel> links;
   final List<NodeModel> nodes;
   final Map<String,dynamic>  userdetails ;
-  const DetailWithData({this.widgetModel, this.nodes,this.links,this.userdetails});
+  const DetailWithData({this.widgetModel,this.links,this.nodes,this.userdetails});
 
   @override
-  List<Object> get props => [widgetModel,nodes];
+  List<Object> get props => [widgetModel,links,nodes,userdetails];
 
   @override
   String toString() {

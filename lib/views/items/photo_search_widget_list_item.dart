@@ -423,8 +423,8 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
 
   Widget buildLeading() => Padding(
         padding: const EdgeInsets.all(0.0),
-        child: Hero(
-          tag: "hero_widget_image_${photo['memberId'].toString()}",
+        child: Container(
+          //tag: "hero_widget_image_${photo['memberId'].toString()}",
           child: photo['img'] == null
               ? Material(
                   color: Colors.transparent,

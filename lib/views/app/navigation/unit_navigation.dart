@@ -108,7 +108,7 @@ class _UnitNavigationState extends State<UnitNavigation> {
   }
 
   _onTapNav(int index) {
-    _controller.animateToPage(index, duration: const Duration(milliseconds: 200), curve: Curves.linear);
+    _controller.jumpToPage(index);
     if (index == 1) {
       BlocProvider.of<CollectBloc>(context).add(EventSetCollectData());
     }

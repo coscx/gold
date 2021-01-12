@@ -25,6 +25,27 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
     if(event is ResetDetailState){
       yield DetailLoading();
     }
+
+    if(event is ChangeSexDetail){
+      try {
+        WidgetModel widgetModel=  state.props.elementAt(0);
+        Map<String ,dynamic> userdetails=  state.props.elementAt(3);
+        final nodes = await this.repository.loadNode(widgetModel);
+        final links = await this.repository.loadWidget(widgetModel.links);
+
+        var result= await IssuesApi.changeSexDetail(event.photo['user']['memberId'].toString(),event.sex);
+        if  (result['code']==200){
+          userdetails['user']['sex']=event.sex;
+        }
+
+
+        yield DetailWithData(widgetModel: widgetModel, nodes: nodes,links: links,userdetails: userdetails);
+
+
+      } catch (_) {
+        yield DetailFailed();
+      }
+    }
   }
 
   Stream<DetailState> _mapLoadWidgetToState(

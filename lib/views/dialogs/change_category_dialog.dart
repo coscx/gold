@@ -4,13 +4,13 @@ import 'package:flutter_unit/components/permanent/feedback_widget.dart';
 
 /// 说明: 
 
-class DeleteCategoryDialog extends StatelessWidget {
+class ChangeCategoryDialog extends StatelessWidget {
   final String title;
   final String content;
   final Function() onSubmit;
   final Function() onCancel;
 
-  DeleteCategoryDialog({
+  ChangeCategoryDialog({
     this.title='', this.content ='',this.onSubmit,this.onCancel
   });
 
@@ -67,12 +67,12 @@ class DeleteCategoryDialog extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(30)),
                   color: Theme.of(context).primaryColor),
-              child: Text('确 定',
+              child: Text('改为男',
                   style: TextStyle(color: Colors.white, fontSize: 16)),
             ),
           ),
           FeedbackWidget(
-            onPressed: ()=>onCancel,
+            onPressed: onCancel,
             child: Container(
               alignment: Alignment.center,
               height: 40,
@@ -80,7 +80,7 @@ class DeleteCategoryDialog extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(30)),
                   color: Colors.orangeAccent),
-              child: Text('取 消',
+              child: Text('改为女',
                   style: TextStyle(color: Colors.white, fontSize: 16)),
             ),
           )
