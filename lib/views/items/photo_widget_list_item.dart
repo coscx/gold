@@ -484,7 +484,7 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
   }
   Widget buildContent(BuildContext context) => Container(
         color: Color(colors[data.family.index]).withAlpha(66),
-        height: 95,
+        height: 110,
         padding: const EdgeInsets.only(top: 4, left: 0, right: 10, bottom: 10),
         child: Row(
           children: <Widget>[
@@ -497,7 +497,8 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
                   _buildTitle(),
 
                   _buildSummary(),
-
+                  Text("创建时间:"+DateTime.fromMillisecondsSinceEpoch(photo['checktime']*1000).toLocal().toString().substring(0,19),
+                      style: TextStyle(color: Colors.black, fontSize: 14)),
                 ],
               ),
             ),
