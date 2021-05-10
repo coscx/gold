@@ -30,7 +30,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin {
   RefreshController _refreshController = RefreshController(initialRefresh: false);
-
+  String boyString = "男";
+  String girlString = "男";
   @override
   void initState() {
     super.initState();
@@ -182,12 +183,12 @@ class _HomePageState extends State<HomePage>
               padding: EdgeInsets.only(right: 0),
               children: {
                 1: state.sex ==1 ?Padding(
-                  padding: EdgeInsets.only(left: 40, right: 40),
-                  child: Text("男"),
+                  padding: EdgeInsets.only(left: 30, right: 30),
+                  child: Text(boyString),
                 ):Text("男"),
                 2: state.sex ==2 ?Padding(
-                  padding: EdgeInsets.only(left: 40, right: 40),
-                  child: Text("女"),
+                  padding: EdgeInsets.only(left: 30, right: 30),
+                  child: Text(girlString),
                 ):Text("女"),
 
               },
@@ -321,6 +322,15 @@ class _HomePageState extends State<HomePage>
     }
 
     if (state is WidgetsLoaded) {
+      var sex =BlocProvider.of<GlobalBloc>(context).state.sex;
+      if(sex ==1){
+        boyString="男("+state.count.toString()+")";
+
+      }
+      if(sex ==2){
+        girlString="女("+state.count.toString()+")";
+
+      }
       List<WidgetModel> items = state.widgets;
       List<dynamic>  photos=state.photos;
       if (items.isEmpty) return EmptyPage();
