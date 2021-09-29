@@ -15,19 +15,19 @@ class TextThemeDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     var queryData = Theme.of(context).textTheme;
     var styles = {
-      "headline: ": queryData.headline,
-      "title: ": queryData.title,
-      "subhead: ": queryData.subhead,
-      "subtitle: ": queryData.body1,
-      "body2: ": queryData.body2,
+      "headline: ": queryData.headline1,
+      "title: ": queryData.headline6,
+      "subhead: ": queryData.subtitle1,
+      "subtitle: ": queryData.bodyText2,
+      "body2: ": queryData.bodyText1,
       "button: ": queryData.button,
       "overline: ": queryData.overline,
-      "subtitle: ": queryData.subtitle,
+      "subtitle: ": queryData.subtitle2,
       "button: ": queryData.caption,
-      "display1: ": queryData.display1,
-      "display2: ": queryData.display2,
-      "display3: ": queryData.display3,
-      "display4: ": queryData.display4,
+      "display1: ": queryData.headline4,
+      "display2: ": queryData.headline3,
+      "display3: ": queryData.headline2,
+      "display4: ": queryData.headline1,
     };
 
     return Container(
