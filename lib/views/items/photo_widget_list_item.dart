@@ -258,6 +258,7 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
           build100Button(context,"通过1",Colors.green),
           build80Button(context,"通过2",Colors.blue),
           build60Button(context,"通过3",Colors.purple),
+          buildHighButton(context,"高危",Colors.deepOrange),
           buildHideButton(context,"隐藏",Colors.deepPurple),
 
         ],
@@ -352,6 +353,29 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
                 BlocProvider.of<HomeBloc>(context).add(EventCheckUser(photo,5));
                 Navigator.of(context).pop();
               },
+            ),
+          ),
+        ));
+  }
+
+  _highUser(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (ctx) => Dialog(
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          child: Container(
+            width: 50,
+            child: DeleteCategoryDialog(
+              title: '将该用户设为高危',
+              content: '是否确定继续执行?',
+              onSubmit: () {
+                BlocProvider.of<HomeBloc>(context).add(EventCheckUser(photo,6));
+                Navigator.of(context).pop();
+              },onCancel: (){
+              Navigator.of(context).pop();
+            },
             ),
           ),
         ));
@@ -482,6 +506,26 @@ Widget buildCard (BuildContext context,Map<String,dynamic> img){
       ],
     );
   }
+
+  Widget buildHighButton(BuildContext context,String txt,MaterialColor color){
+    return    Column(
+      children: [
+
+        RaisedButton(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          color: color,
+          onPressed: (){
+            _highUser(context);
+          },
+          child: Text(txt,
+              style: TextStyle(color: Colors.white, fontSize: 18)),
+        ),
+      ],
+    );
+  }
+
   Widget buildContent(BuildContext context) => Container(
         color: Color(colors[data.family.index]).withAlpha(66),
         height: 110,

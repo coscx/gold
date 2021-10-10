@@ -306,6 +306,40 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> with SingleTickerPr
                   left: 10.0,
                 ),
                 child:  Text(
+                  "高危用户: "+(state.userdetails['user']['facescore']== 10?"是":"否"),
+                  style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal,
+                    decoration: TextDecoration.none,
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+          Row(
+            mainAxisAlignment:
+            MainAxisAlignment
+                .start,
+            children: <Widget>[
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child: Circle(
+                  color: Colors.blue,
+                  radius: 5,
+                ),
+              ),
+              Container(
+                padding:  const EdgeInsets.only(
+                  top: 4.0,
+                  left: 10.0,
+                ),
+                child:  Text(
                   "审核状态: "+(state.userdetails['user']['checked']== 1?"未审核":"已审核"),
                   style: TextStyle(
                     fontFamily: "Poppins",

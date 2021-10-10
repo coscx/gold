@@ -15,7 +15,7 @@ class FlutterUnit extends StatelessWidget {
       return ScreenUtilInit(
           designSize: Size(750, 1334),
       allowFontScaling: true,
-      child:MaterialApp(
+      builder:()=>MaterialApp(
 //            debugShowMaterialGrid: true,
             showPerformanceOverlay: state.showPerformanceOverlay,
 //            showSemanticsDebugger: true,

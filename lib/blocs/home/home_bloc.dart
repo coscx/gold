@@ -62,7 +62,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         if(status ==5){
           reason="，已隐藏该用户";  checked="10";score="-2";type="5";
         }
-
+        if(status ==6){
+          reason="，已将该用户设为高危";  checked="10";score="10";type="10";
+        }
         var result= await IssuesApi.checkUser(user['memberId'].toString(), checked,type,score);
         if  (result['code']==200){
 
